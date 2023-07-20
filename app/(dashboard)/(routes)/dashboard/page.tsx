@@ -3,8 +3,8 @@ import { UserButton } from "@clerk/nextjs"
 const DashboardPage = () => {
   return (
     <div className="flex">
-    <p>dashboard page... (Protected)</p>
-    <UserButton afterSignOutUrl="/" />
+    <p>Dashboard page (Protected)</p>
+   
     </div>
   )
 }
