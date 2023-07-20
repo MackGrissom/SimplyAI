@@ -53,10 +53,10 @@ export default function HomePage() {
     <div>
       <div className="mb-8 space-y-4">
         <h2 className="text-2xl md:text-4xl font-bold text-center text-skyblue-300 text-outline-black">
-          The Power of AI: Explore Our Cutting-Edge Toolkit
+          Explore Your Cutting-Edge AI Toolkit
         </h2>
         <p className="text-muted-foreground font-light text-sm md:text-lg text-center">
-          Leverage AI tools and automate the boring stuff
+          Leverage our latest AI tools and automate your tasks
         </p>
       </div>
       <div className="px-4 md:px-20 lg:px-32 space-y-4">
