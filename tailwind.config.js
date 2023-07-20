@@ -14,6 +14,10 @@ module.exports = {
       screens: {
         "2xl": "1400px",
       },
+      backdropFilter: {
+        'none': 'none',
+        'blur': 'blur(20px)',
+      },
     },
     extend: {
       colors: {
@@ -72,5 +76,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate", "tailwindcss-filters")],
 }
