@@ -11,6 +11,7 @@
   "dependencies": {
     "@clerk/nextjs": "^4.22.1",
     "@hookform/resolvers": "^3.1.1",
+    "@radix-ui/react-avatar": "^1.0.3",
     "@radix-ui/react-dialog": "^1.0.4",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-separator": "^1.0.3",
@@ -31,6 +32,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.45.2",
+    "react-hot-toast": "^2.4.1",
+    "react-lottie": "^1.2.3",
     "react-tsparticles": "^2.11.0",
     "tailwind-merge": "^1.14.0",
     "tailwindcss": "3.3.3",
@@ -38,6 +41,10 @@
     "tailwindcss-filters": "^3.0.0",
     "tsparticles": "^2.11.0",
     "typescript": "5.1.6",
-    "zod": "^3.21.4"
+    "zod": "^3.21.4",
+    "zustand": "^4.3.9"
+  },
+  "devDependencies": {
+    "@types/react-lottie": "^1.2.6"
   }
 }
