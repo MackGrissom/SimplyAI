@@ -12,7 +12,8 @@ function Brain() {
     },
   };
 
-  return <Lottie options={defaultOptions} />;
+  return (
+  <Lottie options={defaultOptions} />);
 }
 
 export default Brain;

@@ -2,12 +2,14 @@
 
 import * as z from "zod";
 import axios from "axios";
-import { MessageSquare } from "lucide-react";
+import { Code } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { ChatCompletionRequestMessage } from "openai";
+import ReactMarkdown from 'react-markdown'
+
 
 import { BotAvatar } from "@/components/bot-avatar";
 import { Heading } from "@/components/heading";
@@ -18,12 +20,12 @@ import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { cn } from "@/lib/utils";
 import { Loader } from "@/components/loader";
 import { UserAvatar } from "@/components/user-avatar";
-import { Empty } from "@/components/ui/empty";
+import { Empty2 } from "@/components/ui/empty2";
 import { useProModal } from "@/hooks/use-pro-modal";
 
 import { formSchema } from "./constants";
 
-const ConversationPage = () => {
+const CodePage = () => {
   const router = useRouter();
   const proModal = useProModal();
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
@@ -42,7 +44,7 @@ const ConversationPage = () => {
       const userMessage: ChatCompletionRequestMessage = { role: "user", content: values.prompt };
       const newMessages = [...messages, userMessage];
 
-      const response = await axios.post('/api/conversation', { messages: newMessages });
+      const response = await axios.post('/api/code', { messages: newMessages });
       setMessages((current) => [...current, userMessage, response.data]);
 
       form.reset();
@@ -60,15 +62,15 @@ const ConversationPage = () => {
   return (
     <div>
       <Heading
-        title="Conversation"
-        description="Our most advanced conversation model."
-        icon={MessageSquare}
-        iconColor="text-violet-500"
-        bgColor="bg-violet-500/10"
+        title="Code Generator"
+        description="Developers rejoice, backup has arrived."
+        icon={Code}
+        iconColor="text-green-500"
+        bgColor="bg-black-500/10"
       />
       <div className="px-4 lg:px-8">
-        {/* #adds chat to top of page */}
 
+        {/* form if wanted  at top of the screen */}
         {/* <div>
           <Form {...form}>
             <form
@@ -95,7 +97,7 @@ const ConversationPage = () => {
                       <Input
                         className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent "
                         disabled={isLoading}
-                        placeholder="  Ex: What is a language model?"
+                        placeholder=" Ex: Build a Navbar component using React."
                         {...field}
                       />
                     </FormControl>
@@ -108,6 +110,7 @@ const ConversationPage = () => {
             </form>
           </Form>
         </div> */}
+
         <div className="space-y-4 mt-4">
           {isLoading && (
             <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted">
@@ -115,7 +118,7 @@ const ConversationPage = () => {
             </div>
           )}
           {messages.length === 0 && !isLoading && (
-            <Empty label="No conversation started." />
+            <Empty2 label="Add some code or ask a code related question." />
           )}
           <div className="flex flex-col-reverse gap-y-4">
             {messages.map((message) => (
@@ -127,15 +130,31 @@ const ConversationPage = () => {
                 )}
               >
                 {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
-                <p className="text-sm">
-                  {message.content}
-                </p>
+
+                <ReactMarkdown
+                  components={{
+                    pre: ({ node, ...props }) => (
+                      <div className="overflow-auto w-full my-2 bg-black/10 p-2 rounded-lg">
+                        <pre {...props} />
+                      </div>
+                    ),
+                    code: ({ node, ...props }) => (
+                      <code className="bg-black/10 rounded-lg p-1 " {...props} />
+                    )
+                  }}
+                  className="text-sm overflow-hidden leading-7"
+                >
+                  {message.content || ""}
+                </ReactMarkdown>
+
               </div>
             ))}
           </div>
         </div>
       </div>
-      <div className="">
+
+      {/* form */}
+      <div>
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
@@ -161,7 +180,7 @@ const ConversationPage = () => {
                       <Input
                         className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent "
                         disabled={isLoading}
-                        placeholder="  Ex: What is a language model?"
+                        placeholder=" Ex: Build a Navbar component using React."
                         {...field}
                       />
                     </FormControl>
@@ -174,8 +193,9 @@ const ConversationPage = () => {
             </form>
           </Form>
         </div>
+
     </div>
   );
 }
 
-export default ConversationPage;
+export default CodePage;
