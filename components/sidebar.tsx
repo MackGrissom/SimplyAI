@@ -3,13 +3,13 @@
 import { cn } from "@/lib/utils";
 import { auth } from "@clerk/nextjs";
 import { Code, ImageIcon, LayoutDashboard, MessageSquare, Music, SeparatorHorizontalIcon, Settings, VideoIcon } from "lucide-react";
-import { Montserrat } from "next/font/google";
+import { Space_Grotesk } from 'next/font/google'
 import Image from "next/image";
 import Link from "next/link";
 import {usePathname} from 'next/navigation'
 import { Separator } from "@/components/ui/separator"
 
-const montserrat = Montserrat({
+const montserrat = Space_Grotesk({
     weight: '600',
     subsets: ['latin']
 });
@@ -40,9 +40,9 @@ const routes = [{
     color: "text-indigo-500"
 },
 {
-    label: "Music Generation",
+    label: "Audio Generation",
     icon: Music,
-    href: '/music',
+    href: '/audio',
     color: "text-pink-500"
 },
 {
@@ -59,7 +59,6 @@ const routes = [{
 },
 
 ]
-// ROYG BIV
 
 const SideBar = () => {
     const pathname = usePathname();

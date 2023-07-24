@@ -11,7 +11,6 @@ const Navbar = () => {
           <MobileSideBar/>
             <div className="flex w-full justify-end">
                 <UserButton afterSignOutUrl="/" />
-
             </div>
         </div>
     )

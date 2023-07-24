@@ -27,6 +27,7 @@ const MobileSideBar = () => {
         <SideBar/>
             </SheetContent>
         </Sheet>
+        
     );
 }
 

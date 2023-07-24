@@ -58,56 +58,16 @@ const ConversationPage = () => {
   }
 
   return (
-    <div>
+    <div className="text-white">
       <Heading
-        title="Conversation"
-        description="Our most advanced conversation model."
+        title="Let's Talk"
+        description="Learn, consult and grow alongside our most advanced conversation model."
         icon={MessageSquare}
-        iconColor="text-violet-500"
+        iconColor="text-[skyblue]"
         bgColor="bg-violet-500/10"
       />
       <div className="px-4 lg:px-8">
-        {/* #adds chat to top of page */}
-
-        {/* <div>
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="
-                rounded-lg 
-                border 
-                w-full 
-                p-4 
-                px-3 
-                md:px-6 
-                focus-within:shadow-sm
-                grid
-                grid-cols-12
-                gap-2
-                
-              "
-            >
-              <FormField
-                name="prompt"
-                render={({ field }) => (
-                  <FormItem className="col-span-12 lg:col-span-10">
-                    <FormControl className="m-0 p-0 ">
-                      <Input
-                        className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent "
-                        disabled={isLoading}
-                        placeholder="  Ex: What is a language model?"
-                        {...field}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-              <Button className="col-span-12 lg:col-span-2 w-full bg-[#87ceeb] text-black border-[1px] border-white hover:text-white" type="submit" disabled={isLoading} size="icon">
-                Generate
-              </Button>
-            </form>
-          </Form>
-        </div> */}
+      
         <div className="space-y-4 mt-4">
           {isLoading && (
             <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted">
@@ -135,7 +95,9 @@ const ConversationPage = () => {
           </div>
         </div>
       </div>
-      <div className="">
+
+
+      <div className="fixed bottom-0 py-2 mx-2 left-[90] md:w-[63%] lg:w-[80%] w-full">
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}

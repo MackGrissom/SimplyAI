@@ -1,6 +1,6 @@
 import React from "react";
 import Lottie from "react-lottie";
-import animationData from "./brain3.json";
+import animationData from "./brain9.json";
 import animationData3 from './brain4.json'
 function Brain3() {
     const defaultOptions = {
@@ -14,9 +14,9 @@ function Brain3() {
 
 
     return (
-    
+    <div className="-z-[999]">
             <Lottie options={defaultOptions} />
-       
+            </div>
     );
 
 

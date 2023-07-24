@@ -1,12 +1,8 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import { ClerkProvider } from '@clerk/nextjs'
-import {Particles} from 'react-tsparticles'
-import {loadFull} from 'tsparticles'
-import { useCallback } from 'react'
-
-const inter = Inter({ subsets: ['latin'] })
+import { Space_Grotesk } from 'next/font/google'
+const font = Space_Grotesk({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'UnifyAI',
@@ -21,7 +17,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" className='everything'>
-        <body className={inter.className}>{children}</body>
+        <body className={font.className}>{children}</body>
       </html>
     </ClerkProvider>
   )
