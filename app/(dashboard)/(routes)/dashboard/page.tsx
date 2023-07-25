@@ -8,8 +8,8 @@ import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Code, ImageIcon, MessageSquare, Music, VideoIcon } from "lucide-react";
 import { tools } from "@/constants";
-import Brain2 from "@/components/brain2";
-import Brain4 from '@/components/brain4';
+import Brain2 from "@/components/animation/brain2";
+
 import Image from "next/image";
 import { Loader } from "@/components/loader";
 
@@ -91,15 +91,15 @@ export default function HomePage() {
   ]
 
   return (
-    <div className="mb-0 pb-0">
+    <div className="mb-0 pb-0 mt-3">
 
       <div className="mb-8 space-y-4 overflow-hidden">
         {/* ANIMATION... */}
-        <Brain2 />
+        {/* <Brain2 /> */}
 
 
 {/* Heading, animated */}
-<div className="overflow-hidden flex items-center justify-center">
+<div className="overflow-hidden flex items-center justify-center pt-2">
       <Image src="/logo1.png" alt="Logo" className="w-10 h-10 mr-2" width={10} height={10} />
       <div
         className="bg-gradient-to-tr from-black to-sky-400 inline-block"
@@ -126,15 +126,15 @@ export default function HomePage() {
       </div>
     </div>
 
-        <p className="text-white/40 bold  font-medium text-sm md:text-lg text-center">
-          Leverage our latest AI tools and automate your workflow
+        <p className="text-white/80 bold  font-medium text-sm md:text-lg text-center">
+          Leverage our latest AI tools and optimize your workflow
         </p>
       </div>
 
 
 
       {/* CARDS */}
-      <div className="lg:grid lg:grid-cols-3 lg:gap-4 lg:px-8 ">
+      <div className="lg:grid lg:grid-cols-2 lg:gap-4 lg:px-8 ">
 
         {/* First Column - pulls from tools object */}
         <div className="col-span-1 space-y-4">
@@ -146,7 +146,7 @@ export default function HomePage() {
             >
               <Card
                 onClick={() => router.push(tool.href)}
-                className="p-4 border-black/5 flex items-center justify-between hover:shadow-md transition cursor-pointer bg-[black]/80 hover:shadow-[skyblue] text-[white]"
+                className=" border-black/5 flex items-center justify-between hover:shadow-md transition cursor-pointer bg-[black]/80 hover:shadow-[skyblue] text-[white]"
               >
                 <div className="flex items-center gap-x-4">
                   <div className={cn("p-2 w-fit rounded-md", tool.bgColor)}>
@@ -162,10 +162,6 @@ export default function HomePage() {
           ))}
         </div>
 
-        {/* Middle Empty Column */}
-        <div className="col-span-1 space-y-4">
-
-        </div>
 
         {/* last column - pulls from tools2 object */}
         <div className="col-span-1 space-y-4">
@@ -177,7 +173,7 @@ export default function HomePage() {
             >
               <Card
                 onClick={() => router.push(tool.href)}
-                className="p-4 border-black/5 flex items-center justify-between hover:shadow-md transition cursor-pointer bg-[black]/80 hover:shadow-[skyblue] text-[white]"
+                className=" border-black/5 flex items-center justify-between hover:shadow-md transition cursor-pointer bg-[black]/80 hover:shadow-[skyblue] text-[white]"
               >
                 <div className="flex items-center gap-x-4">
                   <div className={cn("p-2 w-fit rounded-md", tool.bgColor)}>

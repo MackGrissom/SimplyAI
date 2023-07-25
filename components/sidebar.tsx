@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {usePathname} from 'next/navigation'
 import { Separator } from "@/components/ui/separator"
+import { FreeCounter } from "./free-counter";
 
 const montserrat = Space_Grotesk({
     weight: '600',
@@ -60,7 +61,14 @@ const routes = [{
 
 ]
 
-const SideBar = () => {
+
+interface SidebarProps {
+    apiLimitCount: number;
+}
+
+const SideBar = ({
+    apiLimitCount = 0
+}: SidebarProps) => {
     const pathname = usePathname();
     return (
         <div className="space-y-4 py-4 flex flex-col h-full text-white  bg-black/20 bg-opacity-20 backdrop-blur-lg rounded drop-shadow-lg">
@@ -90,7 +98,9 @@ const SideBar = () => {
                 </div>
 
             </div>
-           
+           <FreeCounter
+            apiLimitCount={apiLimitCount}
+           />
         </div>
     );
 }
