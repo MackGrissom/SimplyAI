@@ -58,13 +58,14 @@ const ConversationPage = () => {
   }
 
   return (
-    <div className="text-white">
+    <div className="text-black">
+      
       <Heading
         title="Let's Talk"
         description="Learn, consult and grow alongside our most advanced conversation model."
         icon={MessageSquare}
         iconColor="text-[skyblue]"
-        bgColor="bg-violet-500/10"
+        bgColor="bg-black-500/10"
       />
       <div className="px-4 lg:px-8">
       
@@ -83,7 +84,7 @@ const ConversationPage = () => {
                 key={message.content}
                 className={cn(
                   "p-8 w-full flex items-start gap-x-8 rounded-lg",
-                  message.role === "user" ? "bg-white border border-black/10" : "bg-muted",
+                  message.role === "user" ? "bg-[skyblue]/50 bg-opacity-40 border border-black/10" : "bg-muted",
                 )}
               >
                 {message.role === "user" ? <UserAvatar /> : <BotAvatar />}

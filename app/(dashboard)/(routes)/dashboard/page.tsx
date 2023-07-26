@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowBigRightDash, ArrowRight, BrainCircuit, Bug, BugIcon, CalendarSearch, File, GoalIcon, HelpCircle, Terminal } from "lucide-react";
+import { ArrowBigRightDash, ArrowRight, BarChart3, Brain, BrainCircuit, Bug, BugIcon, CalendarSearch, File, GoalIcon, HelpCircle, Terminal } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
@@ -57,36 +57,36 @@ export default function HomePage() {
       label: 'Request A Feature',
       icon: Terminal,
       href: '/',
-      color: "text-[skyblue]-500",
-      bgColor: "bg-[skyblue]-500/10",
+      color: "text-[black]",
+      bgColor: "bg-[skyblue]/10",
     },
     {
       label: 'Report A Bug',
       icon: BugIcon,
       href: '/',
-      color: "text-[skyblue]-500",
-      bgColor: "bg-[skyblue]-500/10",
+      color: "text-[black]",
+      bgColor: "bg-[red]/10",
     },
     {
-      label: 'Contribute To The Code',
-      icon: BugIcon,
+      label: 'Reports & Analytics (Coming Soon!)',
+      icon: BarChart3,
       href: '/',
-      color: "text-[skyblue]-500",
-      bgColor: "bg-[skyblue]-500/10",
+      color: "text-[black]",
+      bgColor: "bg-[purple]/10",
     },
     {
-      label: 'Contribute To The Code',
-      icon: BugIcon,
+      label: 'FAQ',
+      icon: HelpCircle,
       href: '/',
-      color: "text-[skyblue]-500",
-      bgColor: "bg-[skyblue]-500/10",
+      color: "text-[black]",
+      bgColor: "bg-[yellow]/10",
     },
     {
-      label: 'Contribute To The Code',
-      icon: BugIcon,
+      label: 'Learn About UnifyAI',
+      icon: Brain,
       href: '/',
       color: "text-[skyblue]-500",
-      bgColor: "bg-[skyblue]-500/10",
+      bgColor: "bg-[skyblue]/10",
     },
   ]
 
@@ -95,58 +95,47 @@ export default function HomePage() {
 
       <div className="mb-8 space-y-4 overflow-hidden">
         {/* ANIMATION... */}
-        {/* <Brain2 /> */}
 
 
-{/* Heading, animated */}
-<div className="overflow-hidden flex items-center justify-center pt-2">
-      <Image src="/logo1.png" alt="Logo" className="w-10 h-10 mr-2" width={10} height={10} />
-      <div
-        className="bg-gradient-to-tr from-black to-sky-400 inline-block"
-        style={{
-          backgroundClip: "text",
-          WebkitBackgroundClip: "text",
-          color: "transparent",
-        }}
-      >
-        <motion.h2
-          className=" py-4 text-2xl md:text-5xl font-bold text-center text-white"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          whileHover={{
-            scale: 1.1,
-            rotate: 5,
-            color: "#f2f8fc",
-            transition: { duration: 0.2 },
-          }}
-          whileTap={{ scale: 0.9 }}
-        >
-          UnifyAI
-        </motion.h2>
-      </div>
-    </div>
 
-        <p className="text-white/80 bold  font-medium text-sm md:text-lg text-center">
-          Leverage our latest AI tools and optimize your workflow
+        {/* Heading, animated */}
+        <div className="overflow-hidden flex items-center justify-center pt-2">
+          <Image src="/logo1.png" alt="Logo" className="w-10 h-10 mr-2" width={10} height={10} />
+          <div
+            className="bg-gradient-to-tr from-black to-sky-400 inline-block"
+            style={{
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              color: "transparent",
+            }}
+          >
+            <h2 className="py-4 text-2xl md:text-5xl font-bold text-center text-white">
+              UnifyAI
+            </h2>
+          </div>
+        </div>
+
+        <p className="text-black/80 bold  font-medium text-sm md:text-lg text-center">
+          Explore your Dashboard and unlock the potential of our cutting-edge AI tools that will enhance your workflow.
         </p>
       </div>
 
 
 
       {/* CARDS */}
-      <div className="lg:grid lg:grid-cols-2 lg:gap-4 lg:px-8 ">
+      <div className="lg:grid lg:grid-cols-2 lg:gap-6 lg:px-8 ">
 
         {/* First Column - pulls from tools object */}
-        <div className="col-span-1 space-y-4">
+        <div className="col-span-1 row-2 space-y-4">
           {/* mapping over tools */}
           {tools.map((tool) => (
             <motion.div
               key={tool.href}
-              whileHover={{ scale: 1.1 }} // Framer Motion whileHover effect
+              whileHover={{ scale: 1.05, opacity: 0.8 }} // Framer Motion whileHover effect
             >
               <Card
                 onClick={() => router.push(tool.href)}
-                className=" border-black/5 flex items-center justify-between hover:shadow-md transition cursor-pointer bg-[black]/80 hover:shadow-[skyblue] text-[white]"
+                className=" border-black/5 flex items-center justify-between hover:shadow-md transition cursor-pointer bg-[white]/80 hover:shadow-[skyblue] text-[black] "
               >
                 <div className="flex items-center gap-x-4">
                   <div className={cn("p-2 w-fit rounded-md", tool.bgColor)}>
@@ -164,16 +153,16 @@ export default function HomePage() {
 
 
         {/* last column - pulls from tools2 object */}
-        <div className="col-span-1 space-y-4">
+        <div className="col-span-1 space-y-4 flex-col justify-end">
           {/* mapping over tools */}
           {tools2.map((tool) => (
             <motion.div
               key={tool.href}
-              whileHover={{ scale: 1.1 }} // Framer Motion whileHover effect
+              whileHover={{ scale: 1.05, opacity: 0.8 }} // Framer Motion whileHover effect
             >
               <Card
                 onClick={() => router.push(tool.href)}
-                className=" border-black/5 flex items-center justify-between hover:shadow-md transition cursor-pointer bg-[black]/80 hover:shadow-[skyblue] text-[white]"
+                className=" border-black/5 flex items-center justify-between hover:shadow-md transition cursor-pointer bg-[white]/80 hover:shadow-[skyblue] text-[black]"
               >
                 <div className="flex items-center gap-x-4">
                   <div className={cn("p-2 w-fit rounded-md", tool.bgColor)}>
