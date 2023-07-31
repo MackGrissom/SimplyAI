@@ -5,7 +5,7 @@ import { Card, CardContent } from "./ui/card";
 import { MAX_FREE_COUNTS } from "@/constants";
 import { Progress } from "./ui/progress";
 import { Button } from "./ui/button";
-import { Code, ImageIcon, MessageSquare, Music, VideoIcon, Zap } from "lucide-react";
+import { Code, ImageIcon, MessageSquare, Music, Rocket, VideoIcon, Zap } from "lucide-react";
 import { motion } from 'framer-motion';
 import { useProModal } from "@/hooks/use-pro-modal";
 
@@ -80,14 +80,18 @@ export const FreeCounter = ({
                         />
                         <motion.button
                             onClick={proModal.onOpen}
-                            className="w-full bg-gradient-to-r from-slate-500 to-sky-500  outline outline-1 outline-[black] h-8 font-extrabold text-lg text-[black]"
+                            className="w-full bg-[skyblue]  outline outline-1 outline-[black] h-8 font-extrabold text-lg rounded-lg text-[black]"
                             whileHover={{
                                 scale: 1.1, // Increase the size on hover
                                 boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)', // Add a subtle box shadow
                             }}
                         >
-                            <span className="w-4 ml-2 fill-white h-4 ">&#9889;</span>
-                            Upgrade
+                            <div className="flex justify-center gap-2">
+                                <div className=" align-center justify-items-start text-[red]">
+                            <Rocket/> 
+                            </div>
+                                Upgrade To Pro
+                                </div>
                         </motion.button>
                     </div>
                 </CardContent>

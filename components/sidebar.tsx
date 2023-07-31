@@ -29,28 +29,28 @@ const routes = [{
     color: "text-violet-500"
 },
 {
-    label: "Image Generation",
+    label: "Code Generation",
+    icon: Code,
+    href: '/code',
+    color: "text-green-700"
+},
+{
+    label: "Image Generation(BETA)",
     icon: ImageIcon,
     href: '/image',
     color: "text-orange-500"
 },
 {
-    label: "Video Generation",
+    label: "Video Generation(BETA)",
     icon: VideoIcon,
     href: '/video',
     color: "text-indigo-500"
 },
 {
-    label: "Audio Generation",
+    label: "Music Generation(BETA)",
     icon: Music,
     href: '/audio',
     color: "text-pink-500"
-},
-{
-    label: "Code Generation",
-    icon: Code,
-    href: '/code',
-    color: "text-green-700"
 },
 {
     label: "Settings",

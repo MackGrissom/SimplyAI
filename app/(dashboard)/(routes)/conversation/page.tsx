@@ -1,10 +1,10 @@
-"use client";
-
+'use client'
+import React, { useState, useRef, useEffect } from 'react';
+import ClipboardJS from 'clipboard';
 import * as z from "zod";
 import axios from "axios";
-import { MessageSquare } from "lucide-react";
+import { Copy, MessageSquare } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { ChatCompletionRequestMessage } from "openai";
@@ -27,6 +27,8 @@ const ConversationPage = () => {
   const router = useRouter();
   const proModal = useProModal();
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
+  const [isTyping, setIsTyping] = useState(false);
+  const [regenerateDisabled, setRegenerateDisabled] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -37,29 +39,91 @@ const ConversationPage = () => {
 
   const isLoading = form.formState.isSubmitting;
 
+  const simulateTyping = async (message: string) => {
+    setIsTyping(true);
+
+    for (let i = 0; i < message.length; i++) {
+      await new Promise((resolve) => setTimeout(resolve, 50)); // Adjust typing speed here (milliseconds)
+      setMessages((prevMessages) => [
+        ...prevMessages.slice(0, prevMessages.length - 1), // Remove "isTyping" message
+        { role: "bot", content: message.substring(0, i + 1) }, // Add partial message as bot response
+      ]);
+    }
+
+    setIsTyping(false);
+  };
+
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       const userMessage: ChatCompletionRequestMessage = { role: "user", content: values.prompt };
-      const newMessages = [...messages, userMessage];
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        userMessage,
+        { role: "bot", content: "Typing..." }, // Add "isTyping" message before the actual bot response
+      ]);
 
-      const response = await axios.post('/api/conversation', { messages: newMessages });
-      setMessages((current) => [...current, userMessage, response.data]);
+      const response = await axios.post('/api/conversation', { messages: [...messages, userMessage] });
+      simulateTyping(response.data.content); // Simulate typing for bot's response
 
       form.reset();
     } catch (error: any) {
       if (error?.response?.status === 403) {
         proModal.onOpen();
       } else {
-        toast.error("Something went wrong.");
+        toast.error('Something went wrong.');
       }
     } finally {
       router.refresh();
     }
-  }
+  };
+
+  // Create a ref for the messages container
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+
+  // Function to scroll to the bottom of the messages container
+  const scrollToBottom = () => {
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
+    }
+  };
+
+  // Scroll to the bottom when messages change
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  // Function to copy the message content to the clipboard
+  const copyToClipboard = (message: string) => {
+    const clipboard = new ClipboardJS('.copy-button', {
+      text: () => message
+    });
+
+    clipboard.on('success', (e) => {
+      toast.success('Copied to clipboard');
+      e.clearSelection();
+    });
+
+    clipboard.on('error', () => {
+      toast.error('Failed to copy');
+    });
+  };
+
+  const regenerateResponse = async () => {
+    try {
+      setRegenerateDisabled(true);
+
+      const lastUserMessage = messages[messages.length - 2]; // Get the user's last message
+      const response = await axios.post('/api/conversation', { messages: [lastUserMessage] });
+      simulateTyping(response.data.content); // Simulate typing for the new bot response
+    } catch (error) {
+      toast.error('Failed to regenerate response.');
+    } finally {
+      setRegenerateDisabled(false);
+    }
+  };
 
   return (
-    <div className="text-black">
-      
+    <div className="text-black font-bold">
       <Heading
         title="Let's Talk"
         description="Learn, consult and grow alongside our most advanced conversation model."
@@ -68,77 +132,86 @@ const ConversationPage = () => {
         bgColor="bg-black-500/10"
       />
       <div className="px-4 lg:px-8">
-      
         <div className="space-y-4 mt-4">
-          {isLoading && (
-            <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted">
-              <Loader />
-            </div>
-          )}
           {messages.length === 0 && !isLoading && (
             <Empty label="No conversation started." />
           )}
-          <div className="flex flex-col-reverse gap-y-4">
-            {messages.map((message) => (
+
+          {/* Wrap messages in a container with max height and overflow-y */}
+          <div
+            ref={messagesContainerRef}
+            className="max-h-[70vh] overflow-y-auto space-y-4"
+          >
+            
+            {messages.map((message, index) => (
               <div
-                key={message.content}
+                key={index}
                 className={cn(
-                  "p-8 w-full flex items-start gap-x-8 rounded-lg",
-                  message.role === "user" ? "bg-[skyblue]/50 bg-opacity-40 border border-black/10" : "bg-muted",
+                  "p-8  w-full flex items-start gap-x-8 rounded-lg",
+                  message.role === "user"
+                    ? "bg-[skyblue]/50 bg-opacity-40 border border-black/10"
+                    : "bg-[#f0f0f0] text-black"
                 )}
               >
                 {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
-                <p className="text-sm">
-                  {message.content}
-                </p>
+                <div className="flex flex-col">
+                  {message.content.split("\n").map((line, idx) => (
+                    <p key={idx} className="text-sm">
+                      {line}
+                    </p>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
+          
+
+         
         </div>
       </div>
 
-
       <div className="fixed bottom-0 py-2 mx-2 left-[90] md:w-[63%] lg:w-[80%] w-full">
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="
-                rounded-lg 
-                border 
-                w-full 
-                p-4 
-                px-3 
-                md:px-6 
-                focus-within:shadow-sm
-                grid
-                grid-cols-12
-                gap-2
-                
-              "
-            >
-              <FormField
-                name="prompt"
-                render={({ field }) => (
-                  <FormItem className="col-span-12 lg:col-span-10">
-                    <FormControl className="m-0 p-0 ">
-                      <Input
-                        className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent "
-                        disabled={isLoading}
-                        placeholder="  Ex: What is a language model?"
-                        {...field}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-              <Button className="col-span-12 lg:col-span-2 w-full bg-[#87ceeb] text-black border-[1px] border-white hover:text-white" type="submit" disabled={isLoading} size="icon">
-                Generate
-              </Button>
-            </form>
-          </Form>
-        </div>
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="
+              rounded-lg 
+              border 
+              w-full 
+              p-4 
+              px-3 
+              md:px-6 
+              focus-within:shadow-sm
+              grid
+              grid-cols-12
+              gap-2
+
+            "
+          >
+            <FormField
+              name="prompt"
+              render={({ field }) => (
+                <FormItem className="col-span-12 lg:col-span-10">
+                  <FormControl className="m-0 p-0 ">
+                    <Input
+                      className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent "
+                      disabled={isLoading}
+                      placeholder="  Ex: What is a language model?"
+                      {...field}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+          
+            <Button className="col-span-12 lg:col-span-2 w-full bg-[#87ceeb] text-black border-[1px] border-white hover:text-white" type="submit" disabled={isLoading} size="icon">
+              Generate
+            </Button>
+          </form>
+        </Form>
+      </div>
     </div>
   );
-}
+};
 
 export default ConversationPage;
