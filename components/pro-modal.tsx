@@ -120,7 +120,8 @@ export const ProModal = () => {
                 <DialogFooter>
                     <motion.button
                         onClick={onSubscribe}
-                        className="w-full  bg-gradient-to-t from-slate-500 to-sky-500  outline outline-1 outline-[black] h-[50px] font-extrabold text-lg text-[white]"
+                        disabled={loading}
+                        className="bg-gradient-to-t from-slate-500 to-sky-500  outline outline-1 outline-[black] h-[50px] font-extrabold text-lg text-[white]"
                         whileHover={{
                             scale: 1.0, // Increase the size on hover
                             boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)', // Add a subtle box shadow

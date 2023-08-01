@@ -51,43 +51,44 @@ export default function HomePage() {
       bgColor: "bg-orange-700/10",
       href: '/video',
     },
-    
+
+
   ];
   const tools2 = [
     {
       label: 'Request A Feature',
       icon: Terminal,
-      href: '/',
-      color: "text-[black]",
-      bgColor: "bg-[skyblue]/10",
+      href: '/featurerequest',
+      color: "text-sky-500",
+      bgColor: "bg-sky-500/10",
     },
     {
       label: 'Report A Bug',
       icon: BugIcon,
-      href: '/',
-      color: "text-[black]",
-      bgColor: "bg-[red]/10",
+      href: '/report',
+      color: "text-red-500",
+      bgColor: "bg-red-500/10",
     },
     {
       label: 'Reports & Analytics (Coming Soon!)',
       icon: BarChart3,
-      href: '/',
-      color: "text-[black]",
-      bgColor: "bg-[purple]/10",
+      href: '/analytics',
+      color: "text-yellow-500/40",
+      bgColor: "bg-yellow-500/10",
     },
     {
       label: 'FAQ',
       icon: HelpCircle,
-      href: '/',
-      color: "text-[black]",
-      bgColor: "bg-[yellow]/10",
+      href: '/faq',
+      color: "text-blue-500",
+      bgColor: "bg-blue-500/10",
     },
     {
       label: 'Learn About UnifyAI',
       icon: Brain,
-      href: '/',
-      color: "text-[skyblue]-500",
-      bgColor: "bg-[skyblue]/10",
+      href: '/About',
+      color: "text-pink-500",
+      bgColor: "bg-pink-500/10",
     },
   ]
 
@@ -116,9 +117,11 @@ export default function HomePage() {
           </div>
         </div>
 
-        <p className="text-black/80 bold  font-medium text-sm md:text-lg text-center">
-          Explore your Dashboard and unlock the potential of our cutting-edge AI tools that will enhance your workflow.
-        </p>
+        <div className="flex justify-center items-center">
+          <p className="text-center text-white text-sm md:text-lg font-medium p-4 rounded-lg inline-block drop-shadow-lg">
+            Cutting-edge AI solutions, centralized.
+          </p>
+        </div>
       </div>
 
 
@@ -127,7 +130,7 @@ export default function HomePage() {
       <div className="lg:grid lg:grid-cols-2 lg:gap-6 lg:px-8 ">
 
         {/* First Column - pulls from tools object */}
-        <div className="col-span-1 row-2 space-y-4">
+        <div className="col-span-1 row-2 space-y-4 drop-shadow-lg">
           {/* mapping over tools */}
           {tools.map((tool) => (
             <motion.div
@@ -136,7 +139,7 @@ export default function HomePage() {
             >
               <Card
                 onClick={() => router.push(tool.href)}
-                className=" border-black/5 flex items-center justify-between hover:shadow-md transition cursor-pointer bg-[white]/80 hover:shadow-[skyblue] text-[black] "
+                className=" border-black/5 flex items-center justify-between hover:shadow-md transition cursor-pointer bg-[white]/70 hover:shadow-[white] text-[black] "
               >
                 <div className="flex items-center gap-x-4">
                   <div className={cn("p-2 w-fit rounded-md", tool.bgColor)}>
@@ -163,7 +166,7 @@ export default function HomePage() {
             >
               <Card
                 onClick={() => router.push(tool.href)}
-                className=" border-black/5 flex items-center justify-between hover:shadow-md transition cursor-pointer bg-[white]/80 hover:shadow-[skyblue] text-[black]"
+                className=" border-black/5 flex items-center justify-between hover:shadow-md transition cursor-pointer  hover:shadow-[white] text-[black] bg-[white]/70"
               >
                 <div className="flex items-center gap-x-4">
                   <div className={cn("p-2 w-fit rounded-md", tool.bgColor)}>

@@ -123,14 +123,16 @@ const ConversationPage = () => {
   };
 
   return (
-    <div className="text-black font-bold">
-      <Heading
-        title="Let's Talk"
-        description="Learn, consult and grow alongside our most advanced conversation model."
-        icon={MessageSquare}
-        iconColor="text-[skyblue]"
-        bgColor="bg-black-500/10"
-      />
+    <div className="text-white font-bold">
+      <div className='bg-[black]/30 rounded-lg'>
+        <Heading
+          title="Let's Talk"
+          description="Learn, consult and grow alongside our most advanced conversation model."
+          icon={MessageSquare}
+          iconColor="text-[skyblue]"
+          bgColor="bg-black-500/10"
+        />
+      </div>
       <div className="px-4 lg:px-8">
         <div className="space-y-4 mt-4">
           {messages.length === 0 && !isLoading && (
@@ -140,17 +142,17 @@ const ConversationPage = () => {
           {/* Wrap messages in a container with max height and overflow-y */}
           <div
             ref={messagesContainerRef}
-            className="max-h-[70vh] overflow-y-auto space-y-4"
+            className="max-h-[60vh] overflow-y-auto space-y-4 pb-5"
           >
-            
+
             {messages.map((message, index) => (
               <div
                 key={index}
                 className={cn(
-                  "p-8  w-full flex items-start gap-x-8 rounded-lg",
+                  "p-8  w-full flex items-start gap-x-8 rounded-lg text-[white]",
                   message.role === "user"
-                    ? "bg-[skyblue]/50 bg-opacity-40 border border-black/10"
-                    : "bg-[#f0f0f0] text-black"
+                    ? "bg-[black]/70 bg-opacity-40 border border-black/10"
+                    : "bg-[skyblue]/60 text-black"
                 )}
               >
                 {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
@@ -164,13 +166,11 @@ const ConversationPage = () => {
               </div>
             ))}
           </div>
-          
 
-         
         </div>
       </div>
 
-      <div className="fixed bottom-0 py-2 mx-2 left-[90] md:w-[63%] lg:w-[80%] w-full">
+      <div className="fixed bottom-0 py-2 mx-2 left-[90] md:w-[63%] lg:w-[80%] w-full ">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
@@ -203,7 +203,7 @@ const ConversationPage = () => {
                 </FormItem>
               )}
             />
-          
+
             <Button className="col-span-12 lg:col-span-2 w-full bg-[#87ceeb] text-black border-[1px] border-white hover:text-white" type="submit" disabled={isLoading} size="icon">
               Generate
             </Button>

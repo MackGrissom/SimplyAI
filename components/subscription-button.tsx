@@ -5,13 +5,13 @@ import { Zap } from 'lucide-react';
 import axios from 'axios';
 import { useState } from 'react';
 
-interface SubScriptionButtonProps {
+interface SubscriptionButtonProps {
     isPro: boolean;
 }
 
-export const SubScriptionButton = ({
+export const SubscriptionButton = ({
     isPro = false
-}: SubScriptionButtonProps) => {
+}: SubscriptionButtonProps) => {
     const [loading, setLoading] = useState(false)
     const onClick = async () => {
         try {

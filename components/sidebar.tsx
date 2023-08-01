@@ -1,108 +1,102 @@
-'use client'
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { Montserrat } from 'next/font/google'
+import { Code, ImageIcon, LayoutDashboard, MessageSquare, Music, Settings, VideoIcon } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
-import { auth } from "@clerk/nextjs";
-import { Code, ImageIcon, LayoutDashboard, MessageSquare, Music, SeparatorHorizontalIcon, Settings, VideoIcon } from "lucide-react";
-import { Space_Grotesk } from 'next/font/google'
-import Image from "next/image";
-import Link from "next/link";
-import {usePathname} from 'next/navigation'
-import { Separator } from "@/components/ui/separator"
-import { FreeCounter } from "./free-counter";
+import { FreeCounter } from "@/components/free-counter";
 
-const montserrat = Space_Grotesk({
-    weight: '600',
-    subsets: ['latin']
-});
+const poppins = Montserrat({ weight: '600', subsets: ['latin'] });
 
+const routes = [
+    {
+        label: 'Dashboard',
+        icon: LayoutDashboard,
+        href: '/dashboard',
+        color: "text-sky-500"
+    },
+    {
+        label: 'UniChat',
+        icon: MessageSquare,
+        href: '/conversation',
+        color: "text-violet-500",
+    },
+    {
+        label: 'Image Generation',
+        icon: ImageIcon,
+        color: "text-pink-700",
+        href: '/image',
+    },
+    {
+        label: 'Video Generation',
+        icon: VideoIcon,
+        color: "text-orange-700",
+        href: '/video',
+    },
+    {
+        label: 'Music Generation',
+        icon: Music,
+        color: "text-emerald-500",
+        href: '/music',
+    },
+    {
+        label: 'Code Generation',
+        icon: Code,
+        color: "text-green-700",
+        href: '/code',
+    },
+    {
+        label: 'Settings',
+        icon: Settings,
+        href: '/settings',
+    },
+];
 
-const routes = [{
-    label: "Dashboard",
-    icon: LayoutDashboard,
-    href: '/dashboard',
-    color: "text-sky-500"
-},
-{
-    label: "Conversation",
-    icon: MessageSquare,
-    href: '/conversation',
-    color: "text-violet-500"
-},
-{
-    label: "Code Generation",
-    icon: Code,
-    href: '/code',
-    color: "text-green-700"
-},
-{
-    label: "Image Generation(BETA)",
-    icon: ImageIcon,
-    href: '/image',
-    color: "text-orange-500"
-},
-{
-    label: "Video Generation(BETA)",
-    icon: VideoIcon,
-    href: '/video',
-    color: "text-indigo-500"
-},
-{
-    label: "Music Generation(BETA)",
-    icon: Music,
-    href: '/audio',
-    color: "text-pink-500"
-},
-{
-    label: "Settings",
-    icon: Settings,
-    href: '/settings',
-    color: "text-white"
-},
-
-]
-
-
-interface SidebarProps {
+export const Sidebar = ({
+    apiLimitCount = 0,
+    isPro = false
+}: {
     apiLimitCount: number;
-}
-
-const SideBar = ({
-    apiLimitCount = 0
-}: SidebarProps) => {
+    isPro: boolean;
+}) => {
     const pathname = usePathname();
+
     return (
-        <div className="space-y-4 py-4 flex flex-col h-full text-white  bg-black/20 bg-opacity-20 backdrop-blur-lg rounded drop-shadow-lg">
+        <div className="space-y-4 py-4 flex flex-col h-full bg-black text-white">
             <div className="px-3 py-2 flex-1">
-                <Link href='/dashboard' className="flex items-center pl-3 mb-6">
-                    <div className="relative w-8 h-8 mr-4">
-                        <Image fill sizes='full'alt='logo' src='/logo1.png' />
+                <Link href="/dashboard" className="flex items-center pl-3 mb-14">
+                    <div className="relative h-8 w-8 mr-4">
+                        <Image fill alt="Logo" src="/logo1.png" />
                     </div>
-                    <h1 className={cn("text-2xl font-bold", montserrat.className)}>UnifyAI</h1>
+                    <h1 className={cn("text-3xl font-bold")}>
+                        UnifiedAI
+                    </h1>
                 </Link>
-                <Separator className="p-0 mb-4 -mt-[5] text-[skyblue] "/>
-                <div className="space-y-1">
+                <div className="space-y-1 bg-black">
                     {routes.map((route) => (
-                        <Link 
+                        <Link
+                            key={route.href}
                             href={route.href}
-                            key={route.href} 
-                            className={cn("text-sm group flex p-3 w-full justify-start font-medium cursor-pointer hover:text-white hover:bg-white/10 rounded-lg transition", 
-                            pathname === route.href ? "text-white bg-[skyblue]/40" : "text-zinc-400"
+                            className={cn(
+                                "text-sm group flex p-3 w-full justify-start font-medium cursor-pointer hover:text-white text-black hover:bg-white/10 rounded-lg transition",
+                                pathname === route.href ? "text-white bg-[skyblue]/40" : "text-white-400",
                             )}
-                            >
-                                <div className="flex items-center flex-1">
-                                    <route.icon  className={cn ("h-5 w-5 mr-3", pathname === route.href ? route.color : 'text-none')}/>
-                                    {route.label}
-                                </div>
-                            </Link>
+                        >
+                            <div className="flex items-center flex-1">
+                                <route.icon className={cn("h-5 w-5 mr-3", route.color)} />
+                                {route.label}
+                            </div>
+                        </Link>
                     ))}
                 </div>
-
             </div>
-           <FreeCounter
-            apiLimitCount={apiLimitCount}
-           />
+            <FreeCounter
+                apiLimitCount={apiLimitCount}
+                isPro={isPro}
+            />
         </div>
     );
-}
-
-export default SideBar;
+};

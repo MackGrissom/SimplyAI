@@ -51,10 +51,12 @@ const tools = [
 
 interface FreeCounterProps {
     apiLimitCount: number;
+    isPro: boolean;
 };
 
 export const FreeCounter = ({
-    apiLimitCount = 0
+    apiLimitCount = 0,
+    isPro = false,
 }: FreeCounterProps) => {
     const proModal = useProModal();
     const [mounted, setMounted] = useState(false);
@@ -64,6 +66,10 @@ export const FreeCounter = ({
     }, [])
 
     if (!mounted) {
+        return null
+    }
+
+    if (isPro) {
         return null
     }
 
@@ -80,14 +86,14 @@ export const FreeCounter = ({
                         />
                         <motion.button
                             onClick={proModal.onOpen}
-                            className="w-full bg-[skyblue]  outline outline-1 outline-[black] h-8 font-extrabold text-lg rounded-lg text-[black]"
+                            className="w-full bg-[skyblue]/50  outline outline-1 outline-[white] h-8 font-extrabold text-lg rounded-lg text-[white]"
                             whileHover={{
                                 scale: 1.1, // Increase the size on hover
                                 boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)', // Add a subtle box shadow
                             }}
                         >
                             <div className="flex justify-center gap-2">
-                                <div className=" align-center justify-items-start text-[red]">
+                                <div className=" align-center justify-items-start text-[white]">
                             <Rocket/> 
                             </div>
                                 Upgrade To Pro
