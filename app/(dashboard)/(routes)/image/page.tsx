@@ -58,8 +58,8 @@ const PhotoPage = () => {
     }
   }
 
-  return ( 
-    <div>
+  return (
+    <div className="text-white">
       <Heading
         title="Image Generation"
         description="Turn your prompt into an image."
@@ -69,8 +69,8 @@ const PhotoPage = () => {
       />
       <div className="px-4 lg:px-8">
         <Form {...form}>
-          <form 
-            onSubmit={form.handleSubmit(onSubmit)} 
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
             className="
               rounded-lg 
               border 
@@ -82,6 +82,7 @@ const PhotoPage = () => {
               grid
               grid-cols-12
               gap-2
+              
             "
           >
             <FormField
@@ -90,9 +91,9 @@ const PhotoPage = () => {
                 <FormItem className="col-span-12 lg:col-span-6">
                   <FormControl className="m-0 p-0">
                     <Input
-                      className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
-                      disabled={isLoading} 
-                      placeholder=" Ex: A photo of a chimpanzee in the style of salvador dali.." 
+                      className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent text-black"
+                      disabled={isLoading}
+                      placeholder=" Ex: A 4k advertisement for a water bottle company in the swiss alps."
                       {...field}
                     />
                   </FormControl>
@@ -104,10 +105,10 @@ const PhotoPage = () => {
               name="amount"
               render={({ field }) => (
                 <FormItem className="col-span-12 lg:col-span-2">
-                  <Select 
-                    disabled={isLoading} 
-                    onValueChange={field.onChange} 
-                    value={field.value} 
+                  <Select
+                    disabled={isLoading}
+                    onValueChange={field.onChange}
+                    value={field.value}
                     defaultValue={field.value}
                   >
                     <FormControl>
@@ -117,8 +118,8 @@ const PhotoPage = () => {
                     </FormControl>
                     <SelectContent>
                       {amountOptions.map((option) => (
-                        <SelectItem 
-                          key={option.value} 
+                        <SelectItem
+                          key={option.value}
                           value={option.value}
                         >
                           {option.label}
@@ -134,10 +135,10 @@ const PhotoPage = () => {
               name="resolution"
               render={({ field }) => (
                 <FormItem className="col-span-12 lg:col-span-2">
-                  <Select 
-                    disabled={isLoading} 
-                    onValueChange={field.onChange} 
-                    value={field.value} 
+                  <Select
+                    disabled={isLoading}
+                    onValueChange={field.onChange}
+                    value={field.value}
                     defaultValue={field.value}
                   >
                     <FormControl>
@@ -147,8 +148,8 @@ const PhotoPage = () => {
                     </FormControl>
                     <SelectContent>
                       {resolutionOptions.map((option) => (
-                        <SelectItem 
-                          key={option.value} 
+                        <SelectItem
+                          key={option.value}
                           value={option.value}
                         >
                           {option.label}
@@ -193,8 +194,8 @@ const PhotoPage = () => {
         </div>
       </div>
     </div>
-   );
+  );
 }
- 
+
 export default PhotoPage;
 

@@ -44,6 +44,11 @@ export default function HomePage() {
       bgColor: "bg-pink-700/10",
       href: '/image',
     },
+   
+
+
+  ];
+  const tools2 = [
     {
       label: 'Video Generation (In Beta)',
       icon: VideoIcon,
@@ -51,42 +56,25 @@ export default function HomePage() {
       bgColor: "bg-orange-700/10",
       href: '/video',
     },
-
-
-  ];
-  const tools2 = [
     {
       label: 'Request A Feature',
       icon: Terminal,
-      href: '/featurerequest',
+      href: '/feature-request',
       color: "text-sky-500",
       bgColor: "bg-sky-500/10",
     },
     {
       label: 'Report A Bug',
       icon: BugIcon,
-      href: '/report',
+      href: '/bug-reporting',
       color: "text-red-500",
       bgColor: "bg-red-500/10",
     },
-    {
-      label: 'Reports & Analytics (Coming Soon!)',
-      icon: BarChart3,
-      href: '/analytics',
-      color: "text-yellow-500/40",
-      bgColor: "bg-yellow-500/10",
-    },
-    {
-      label: 'FAQ',
-      icon: HelpCircle,
-      href: '/faq',
-      color: "text-blue-500",
-      bgColor: "bg-blue-500/10",
-    },
+  
     {
       label: 'Learn About UnifyAI',
       icon: Brain,
-      href: '/About',
+      href: '/about',
       color: "text-pink-500",
       bgColor: "bg-pink-500/10",
     },
@@ -139,7 +127,7 @@ export default function HomePage() {
             >
               <Card
                 onClick={() => router.push(tool.href)}
-                className=" border-black/5 flex items-center justify-between hover:shadow-md transition cursor-pointer bg-[white]/70 hover:shadow-[white] text-[black] "
+                className=" border-black/5 flex items-center justify-between hover:shadow-sm transition cursor-pointer bg-[white]/20  text-[white] "
               >
                 <div className="flex items-center gap-x-4">
                   <div className={cn("p-2 w-fit rounded-md", tool.bgColor)}>
@@ -166,7 +154,7 @@ export default function HomePage() {
             >
               <Card
                 onClick={() => router.push(tool.href)}
-                className=" border-black/5 flex items-center justify-between hover:shadow-md transition cursor-pointer  hover:shadow-[white] text-[black] bg-[white]/70"
+                className=" border-black/5 flex items-center justify-between  transition cursor-pointer  text-[white] bg-[white]/10"
               >
                 <div className="flex items-center gap-x-4">
                   <div className={cn("p-2 w-fit rounded-md", tool.bgColor)}>

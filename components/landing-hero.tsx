@@ -1,5 +1,3 @@
-'use client'
-
 "use client";
 
 import TypewriterComponent from "typewriter-effect";
@@ -19,13 +17,12 @@ export const LandingHero = () => {
                     <TypewriterComponent
                         options={{
                             strings: [
-                                "GPT-4 Chatbot.",
-                                "Code Generation.",
-                                "Photo, Video and Audio Generation.",
+                                "GPT-4 Powered Chatbot.",
+                                "Generate Code.",
+                                "Generate Art, Photos, Video & Audio.",
                                 "Email & Blog Writing.",
-                                "E-mail Writing.",
                                 "Brainstorming",
-                                
+                                "Unlock Unlimited Potential"
                             ],
                             autoStart: true,
                             loop: true,

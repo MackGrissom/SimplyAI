@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, useRef, useEffect } from 'react';
+
 import ClipboardJS from 'clipboard';
 import * as z from "zod";
 import axios from "axios";
@@ -22,7 +23,8 @@ import { Empty } from "@/components/ui/empty";
 import { useProModal } from "@/hooks/use-pro-modal";
 
 import { formSchema } from "./constants";
-
+import clipboardCopy from "clipboard-copy";
+import ChatBubble from '@/components/chat-bubble';
 const ConversationPage = () => {
   const router = useRouter();
   const proModal = useProModal();
@@ -140,44 +142,23 @@ const ConversationPage = () => {
           )}
 
           {/* Wrap messages in a container with max height and overflow-y */}
-          <div
-            ref={messagesContainerRef}
-            className="max-h-[60vh] overflow-y-auto space-y-4 pb-5"
-          >
+          <div ref={messagesContainerRef} className="max-h-[60vh] overflow-y-auto space-y-4 pb-5">
+  {messages.map((message, index) => (
+    <ChatBubble key={index} message={message} />
+  ))}
+</div>
 
-            {messages.map((message, index) => (
-              <div
-                key={index}
-                className={cn(
-                  "p-8  w-full flex items-start gap-x-8 rounded-lg text-[white]",
-                  message.role === "user"
-                    ? "bg-[black]/70 bg-opacity-40 border border-black/10"
-                    : "bg-[skyblue]/60 text-black"
-                )}
-              >
-                {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
-                <div className="flex flex-col">
-                  {message.content.split("\n").map((line, idx) => (
-                    <p key={idx} className="text-sm">
-                      {line}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
 
         </div>
       </div>
 
-      <div className="fixed bottom-0 py-2 mx-2 left-[90] md:w-[63%] lg:w-[80%] w-full ">
+      <div className="fixed bottom-0 py-2 mx-2 left-[90] md:w-[63%] lg:w-[80%] w-[95%] ">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
             className="
               rounded-lg 
-              border 
-              w-full 
+              border           
               p-4 
               px-3 
               md:px-6 
@@ -185,7 +166,9 @@ const ConversationPage = () => {
               grid
               grid-cols-12
               gap-2
-
+              text-black
+              w-[93%]
+              
             "
           >
             <FormField
@@ -194,7 +177,7 @@ const ConversationPage = () => {
                 <FormItem className="col-span-12 lg:col-span-10">
                   <FormControl className="m-0 p-0 ">
                     <Input
-                      className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent "
+                      className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent  "
                       disabled={isLoading}
                       placeholder="  Ex: What is a language model?"
                       {...field}

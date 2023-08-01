@@ -53,7 +53,7 @@ const VideoPage = () => {
   }
 
   return ( 
-    <div>
+    <div className="text-white">
       <Heading
         title="Video Generation"
         description="Turn your prompt into video."

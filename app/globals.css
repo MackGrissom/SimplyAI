@@ -27,11 +27,11 @@ body::before {
   left: 0;
   width: 100%;
   height: 200%;
-  background-image: url('/bg9.svg');
+  background-image: url('/bg.svg');
   background-size: cover;
   background-repeat: none;
-  box-shadow: inset 0 0 0 1000px #1c1d1e70;
-  animation: moveWaterBackground 30s linear infinite;
+  box-shadow: inset 0 0 0 1000px #1c1d1e9a;
+  animation: moveWaterBackground 80s linear infinite;
   animation-play-state: running;
 }
 
@@ -132,4 +132,9 @@ body::before {
 /* x button on mobile sidebar */
 #radix-\:r3\: > button > svg {
   color: white;
+}
+
+/* removing sidebar backgrond for transparent effect */
+body > div.h-full.relative > div {
+  background: transparent;
 }

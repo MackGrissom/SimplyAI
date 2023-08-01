@@ -6,8 +6,8 @@ export const UserAvatar = () => {
     const {user} = useUser();
 
     return (
-        <Avatar className="h-8 w-8">
-            <AvatarImage src={user?.profileImageUrl} />
+        <Avatar className="bg-transparent bg-sky rounded-full mt-3">
+            <AvatarImage src={user?.profileImageUrl}/>
             <AvatarFallback>
                 {user?.firstName?.charAt(0)}
                 {user?.lastName?.charAt(0)}
