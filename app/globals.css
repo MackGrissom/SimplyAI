@@ -138,3 +138,8 @@ body::before {
 body > div.h-full.relative > div {
   background: transparent;
 }
+
+#radix-\:r3\: {
+background: black;
+color: black;
+}

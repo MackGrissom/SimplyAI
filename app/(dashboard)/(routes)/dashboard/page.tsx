@@ -81,13 +81,9 @@ export default function HomePage() {
   ]
 
   return (
+    
     <div className="mb-0 pb-0 mt-3">
-
       <div className="mb-8 space-y-4 overflow-hidden">
-        {/* ANIMATION... */}
-
-
-
         {/* Heading, animated */}
         <div className="overflow-hidden flex items-center justify-center pt-2">
           <Image src="/logo1.png" alt="Logo" className="w-10 h-10 mr-2" width={10} height={10} />
@@ -104,15 +100,12 @@ export default function HomePage() {
             </h2>
           </div>
         </div>
-
         <div className="flex justify-center items-center">
           <p className="text-center text-white text-sm md:text-lg font-medium p-4 rounded-lg inline-block drop-shadow-lg">
-            Cutting-edge AI solutions, centralized.
+            Welcome to your Dashboard
           </p>
         </div>
       </div>
-
-
 
       {/* CARDS */}
       <div className="lg:grid lg:grid-cols-2 lg:gap-6 lg:px-8 ">

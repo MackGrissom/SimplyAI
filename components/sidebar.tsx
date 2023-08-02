@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Montserrat } from 'next/font/google'
-import { Code, ImageIcon, LayoutDashboard, MessageSquare, Music, Settings, VideoIcon } from "lucide-react";
+import { Code, ImageIcon, Languages, LayoutDashboard, MessageSquare, Music, Settings, VideoIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
@@ -19,10 +19,22 @@ const routes = [
         color: "text-sky-500"
     },
     {
-        label: 'UniChat',
+        label: 'UnifyChat',
         icon: MessageSquare,
         href: '/conversation',
         color: "text-violet-500",
+    },
+    {
+        label: 'Code Generation',
+        icon: Code,
+        color: "text-green-700",
+        href: '/code',
+    },
+    {
+        label: 'Translator',
+        icon: Languages,
+        color: "text-[blue]-700",
+        href: '/translator',
     },
     {
         label: 'Image Generation',
@@ -42,12 +54,7 @@ const routes = [
         color: "text-emerald-500",
         href: '/music',
     },
-    {
-        label: 'Code Generation',
-        icon: Code,
-        color: "text-green-700",
-        href: '/code',
-    },
+    
     {
         label: 'Settings',
         icon: Settings,
