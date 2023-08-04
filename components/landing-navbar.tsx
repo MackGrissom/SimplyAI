@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useAuth } from '@clerk/nextjs'
 import { cn } from '@/lib/utils'
 import { Button } from './ui/button'
+import Banner from './banner'
 
 const font = Space_Grotesk({ subsets: ['latin'] })
 
@@ -19,9 +20,23 @@ export const LandingNavbar = () => {
                     <Image fill alt='logo' src='/logo1.png' />
                 </div>
                 <h1 className={cn('text-2xl font-bolt text-white', font.className)}>
-                    UnifiedAI
+                    UnifyAI
                 </h1>
             </Link>
+            <Banner />
+            {/* <div className='gap-8'>
+                <ul className='grid grid-cols-3 text-white gap-8'>
+                    <li className='col-span-1 hover:underline hover:text-[skyblue]'>
+                        <Link href='/pricing'>Pricing</Link>
+                    </li>
+                    <li className='col-span-1 hover:underline hover:text-[skyblue]'>
+                        <a href='/about'>About</a>
+                    </li>
+                    <li className='col-span-1 hover:underline hover:text-[skyblue]'>
+                        <a href='/test'>Test</a>
+                    </li>
+                </ul>
+            </div> */}
             <div className="flex items-center gap x-2">
                 <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
                     <Button variant='outline' className='rounded-lg'>
@@ -29,6 +44,7 @@ export const LandingNavbar = () => {
                     </Button>
                 </Link>
             </div>
+            
         </nav>
     )
 }

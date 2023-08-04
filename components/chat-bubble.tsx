@@ -15,7 +15,9 @@ const ChatBubble = ({ message }) => {
                 message.role === "user" ? "justify-end" : "justify-start"
             )}
         >
+            <span className="pr-2">
             {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
+            </span>
             <div
                 className={cn(
                     "rounded-lg text-[white] p-3 max-w-[60%]",
