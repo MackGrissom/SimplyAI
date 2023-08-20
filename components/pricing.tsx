@@ -13,6 +13,7 @@ interface Tier {
     id: string;
     href: string;
     price: { monthly: string; annually: string };
+    startingAt: string;
     description: string;
     features: string[];
     mostPopular: boolean;
@@ -25,42 +26,48 @@ const frequencies: Frequency[] = [
 
 const tiers: Tier[] = [
     {
-        name: 'Freelancer',
+        name: 'Self-Starter Essentials',
         id: 'tier-freelancer',
         href: '#',
-        price: { monthly: '$20', annually: '$225' },
-        description: 'The essentials to provide your best work for clients.',
-        features: ['5 products', 'Up to 1,000 subscribers', 'Basic analytics', '48-hour support response time'],
+        startingAt: "Start", 
+        price: { monthly: '$10', annually: '$100' },
+        description: 'Designed to cater to individual users with lower usage requirements and budgets.',
+        features: ["Basic AI Models",
+            "Limited Usage Quotas",
+            "Template-Based Solutions",
+            "Guided Tutorials",
+            "Community Support"],
         mostPopular: false,
     },
     {
         name: 'Startup',
         id: 'tier-startup',
+        startingAt: "Grow", 
         href: '#',
-        price: { monthly: '$40', annually: '$450' },
+        price: { monthly: '$60', annually: '$715' },
         description: 'A plan that scales with your rapidly growing business.',
         features: [
-            '25 products',
-            'Up to 10,000 subscribers',
-            'Advanced analytics',
-            '24-hour support response time',
-            'Marketing automations',
+            "Advanced AI Models",
+            "Higher Usage Quotas",
+            "Customizable Workflows",
+            "Priority Email Support",
+            "Access to Beta Features"
         ],
         mostPopular: true,
     },
     {
         name: 'Enterprise',
         id: 'tier-enterprise',
+        startingAt: "Scale",
         href: '#',
-        price: { monthly: '$60', annually: '$600' },
-        description: 'Dedicated support and infrastructure for your company.',
+        price: { monthly: '$120', annually: '$1400' },
+        description: 'Tailored to companies requiring dedicated support and advanced AI capabilities. Contact us for details.',
         features: [
-            'Unlimited products',
-            'Unlimited subscribers',
-            'Advanced analytics',
-            '1-hour, dedicated support response time',
-            'Marketing automations',
-            'Custom reporting tools',
+            "Premium AI Models",
+            "Unlimited Usage Quotas",
+            "Advanced Customization",
+            "Dedicated Account Manager",
+            "Early Access to New Features"
         ],
         mostPopular: false,
     },
@@ -118,11 +125,17 @@ export default function PricingExample() {
                                 <h3 id={tier.id} className="text-lg font-semibold leading-8 text-white">
                                     {tier.name}
                                 </h3>
+                                    <span className='flex flex-col flex-wrap content-between justify-end items-end'>
+                                <h4 className='text-md font-light leading-8 text-gray/60 pb-3 text-[skyblue]'> 
+                                {tier.startingAt}
+                                </h4>
                                 {tier.mostPopular ? (
-                                    <p className="rounded-full bg-[skyblue] px-2.5 py-1 text-xs font-semibold leading-5 text-white">
+                                    <p className="rounded-full bg-[skyblue] px-2.5 py-1 text-xs font-semibold leading-5 text-white ftlex-star">
                                         Most popular
                                     </p>
+                                    
                                 ) : null}
+                                </span>
                             </div>
                             <p className="mt-4 text-sm leading-6 text-gray-300">{tier.description}</p>
                             <p className="mt-6 flex items-baseline gap-x-1">

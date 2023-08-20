@@ -17,11 +17,11 @@ const Banner: React.FC = () => {
         <div className="flex items-center gap-x-6 bg-[skyblue]/30 px-6 py-2.5 sm:px-3.5 sm:before:flex-1 rounded-lg">
             <p className="text-sm leading-6 text-white">
                 <a href="#">
-                    <strong className="font-semibold">We're Officially In Beta!</strong>
+                    <strong className="font-semibold"> Officially In Beta!</strong>
                     <svg viewBox="0 0 2 2" className="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true">
                         <circle cx={1} cy={1} r={1} />
                     </svg>
-                    Join us as we continue to develop  and see what’s coming up next&nbsp;
+                    Join us as we continue to develop our tools and see what’s coming up next&nbsp;
                     <span aria-hidden="true">&rarr;</span>
                 </a>
             </p>

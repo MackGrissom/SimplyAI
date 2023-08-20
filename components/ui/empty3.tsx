@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Brain6 from "../animation/brain6";
+import Brain3 from "../animation/brain3";
 
 interface EmptyProps {
     label: string;

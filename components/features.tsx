@@ -48,7 +48,7 @@ const Features: React.FC = () => {
                         <p className="mt-2 text-3xl font-bold tracking-tight text-[white] sm:text-4xl">All-Inclusive AI Platform</p>
                         <p className="mt-6 text-base leading-7 text-white/70">
                             Elevate your capabilities with UnifyAI, the ultimate all-in-one platform. Seamlessly engage users with our advanced AI chat bot, effortlessly generate code snippets for diverse programming needs, create visually captivating images and videos using cutting-edge algorithms, and facilitate text translation across languages with precision.
-                            Developers and creatives alike can harness UnifyAI's comprehensive toolkit and API integration to craft AI-powered applications that unleash unlimited potential.
+                            Developers and creatives alike can harness UnifyAI&pos;s comprehensive toolkit and API integration to craft AI-powered applications that unleash unlimited potential.
                         </p>
                     </div>
                     <dl className="col-span-2 grid grid-cols-1 gap-x-8 gap-y-10 text-base leading-7 text-white sm:grid-cols-2 lg:gap-y-16">

@@ -41,7 +41,7 @@ const routes = [
         color: "text-sky-500",
     },
     {
-        label: "UniAIChat",
+        label: "Chat Assistant",
         icon: MessageSquare,
         href: "/conversation",
         color: "text-violet-500",
@@ -59,12 +59,6 @@ const routes = [
         href: "/image",
     },
     {
-        label: "Translator",
-        icon: Languages,
-        color: "text-[blue]/30",
-        href: "/translator",
-    },
-    {
         label: "Video Generator",
         icon: VideoIcon,
         color: "text-orange-700",
@@ -77,7 +71,13 @@ const routes = [
         href: "/music",
     },
     {
-        label: "Developers",
+        label: "Translator",
+        icon: Languages,
+        color: "text-[blue]/30",
+        href: "/translator",
+    },
+    {
+        label: "Developer Resources",
         icon: Laptop,
         color: "text-[skyblue]",
         href: "/developers",

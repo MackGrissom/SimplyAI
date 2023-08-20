@@ -1,6 +1,6 @@
 import React from 'react';
 import Lottie from 'lottie-web';
-import animationData from './animation/comingsoon.json'; // Replace with your Lottie animation JSON file
+import animationData from './animation/brain11.json'; // Replace with your Lottie animation JSON file
 import { Button } from './ui/button';
 
 interface ComingSoonProps {
