@@ -1,6 +1,5 @@
 import React from 'react';
 import Lottie from 'lottie-web';
-import animationData from './animation/brain11.json'; // Replace with your Lottie animation JSON file
 import { Button } from './ui/button';
 
 interface ComingSoonProps {
@@ -25,7 +24,7 @@ const ComingSoon: React.FC<ComingSoonProps> = ({ animationData, text }) => {
                 animation.destroy();
             };
         }
-    }, []);
+    });
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }} className='bottom-0 w-full text-white -mt-[10%] hidden lg:flex md:flex'>
