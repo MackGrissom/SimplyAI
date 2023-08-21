@@ -31,7 +31,6 @@ import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
 
-
 const CodePage = () => {
   const router = useRouter();
   const proModal = useProModal();
@@ -68,7 +67,6 @@ const CodePage = () => {
   }
 
   useEffect(() => {
-    // Scroll to the bottom of the messages container after updating messages
     if (messagesContainerRef.current) {
       messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
     }
@@ -109,13 +107,15 @@ const CodePage = () => {
                       pre: ({ node, ...props }) => (
                         <div className="overflow-auto w-full my-2 bg-black/10 p-2 rounded-lg relative">
                           <pre {...props} />
-                          <div className="absolute top-2 right-2">
-                            <CopyToClipboard text={props.children}>
-                              <button className="bg-gray-300 hover:bg-gray-400 rounded p-1">
-                                Copy
-                              </button>
-                            </CopyToClipboard>
-                          </div>
+                          {props.className && props.className.includes('content-management-systems') && (
+                            <div className="absolute top-2 right-2">
+                              <CopyToClipboard text={props.children[0]}>
+                                <button className="bg-gray-300 hover:bg-gray-400 rounded p-1">
+                                  Copy
+                                </button>
+                              </CopyToClipboard>
+                            </div>
+                          )}
                         </div>
                       ),
                       code: ({ node, ...props }) => {
