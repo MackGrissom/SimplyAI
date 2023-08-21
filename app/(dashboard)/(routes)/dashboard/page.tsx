@@ -44,7 +44,7 @@ export default function HomePage() {
       bgColor: "bg-pink-700/10",
       href: '/image',
     },
-   
+
 
 
   ];
@@ -70,7 +70,7 @@ export default function HomePage() {
       color: "text-red-500",
       bgColor: "bg-red-500/10",
     },
-  
+
     {
       label: 'Learn About UnifyAI',
       icon: Brain,
@@ -81,7 +81,7 @@ export default function HomePage() {
   ]
 
   return (
-    
+
     <div className="mb-0 pb-0 mt-3">
       <div className="mb-8 space-y-4 overflow-hidden">
         {/* Heading, animated */}

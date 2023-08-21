@@ -71,12 +71,6 @@ const routes = [
         href: "/music",
     },
     {
-        label: "Translator",
-        icon: Languages,
-        color: "text-[blue]/30",
-        href: "/translator",
-    },
-    {
         label: "Developer Resources",
         icon: Laptop,
         color: "text-[skyblue]",
