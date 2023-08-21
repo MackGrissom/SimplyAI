@@ -31,6 +31,7 @@ import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
 
+
 const CodePage = () => {
   const router = useRouter();
   const proModal = useProModal();
@@ -109,7 +110,7 @@ const CodePage = () => {
                           <pre {...props} />
                           {props.className && props.className.includes('content-management-systems') && (
                             <div className="absolute top-2 right-2">
-                              <CopyToClipboard text={props.children[0]}>
+                              <CopyToClipboard text={props.children[0] as string}>
                                 <button className="bg-gray-300 hover:bg-gray-400 rounded p-1">
                                   Copy
                                 </button>
