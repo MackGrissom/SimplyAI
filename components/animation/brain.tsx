@@ -1,9 +1,12 @@
+// THIS IS BEING USED ON CONVERSATION....
+
+
 import React from "react";
-import Lottie from "react-lottie";
+import Lottie, { useLottie } from 'lottie-react'
 import animationData from "./brain.json";
 
 function Brain() {
-  const defaultOptions = {
+  const options = {
     loop: true,
     autoplay: true,
     animationData: animationData,
@@ -11,9 +14,10 @@ function Brain() {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+const { View } = useLottie(options)
 
   return (
-  <Lottie options={defaultOptions} />);
+  <>{View}</>);
 }
 
 export default Brain;

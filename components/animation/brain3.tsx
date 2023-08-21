@@ -1,9 +1,14 @@
+// THIS IS BEING USED ON CODE GENERATOR.........
+
+
+
 import React from "react";
-import Lottie from "react-lottie";
+import { useLottie } from "lottie-react";
 import animationData from "./brain4.json";
-import animationData3 from './brain4.json'
+
+
 function Brain3() {
-    const defaultOptions = {
+    const options = {
         loop: true,
         autoplay: true,
         animationData: animationData,
@@ -12,11 +17,10 @@ function Brain3() {
         },
     };
 
+ const { View } = useLottie(options)
 
     return (
-    
-            <Lottie options={defaultOptions} />
-       
+        <>{View}</>
     );
 
 
