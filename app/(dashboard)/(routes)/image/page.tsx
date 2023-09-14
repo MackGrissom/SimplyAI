@@ -1,5 +1,4 @@
-"use client";
-
+'use client'
 import * as z from "zod";
 import axios from "axios";
 import Image from "next/image";
@@ -22,6 +21,31 @@ import { useProModal } from "@/hooks/use-pro-modal";
 
 import { amountOptions, formSchema, resolutionOptions } from "./constants";
 
+// Define an array of enhanced prompts
+const enhancedPrompts = [
+  "Create images that capture the feeling of happiness and tranquility.",
+  "Generate visuals that evoke a sense of mystery and nostalgia.",
+  "Design scenes of futuristic cityscapes with towering skyscrapers.",
+  "Illustrate serene landscapes of lush forests and tranquil lakes.",
+  "Bring to life characters from a fantasy realm with unique appearances.",
+  "Visualize mythical creatures that combine elements of different animals.",
+  "Craft images of everyday objects transformed into works of art.",
+  "Imagine vehicles with a futuristic twist, pushing the boundaries of design.",
+  "Reimagine historical figures in a modern context with a touch of fantasy.",
+  "Create scenes that blend elements of the past and the future.",
+  "Generate dreamlike landscapes where reality blurs with the imaginary.",
+  "Craft visuals that challenge the laws of physics and logic.",
+  "Design images that juxtapose light and darkness, symbolizing balance.",
+  "Combine opposing forces, like fire and water, in a harmonious way.",
+  "Create images that blend the aesthetics of steampunk and cyberpunk.",
+  "Visualize a world where fantasy and science fiction coexist.",
+  "Generate visuals that showcase the interplay of different textures.",
+  "Design objects that challenge expectations by using unconventional materials.",
+  "Imagine scenarios where nature and advanced technology harmonize.",
+  "Craft images that depict futuristic cities integrated seamlessly with natural elements.",
+  // Add more prompts here
+];
+
 const PhotoPage = () => {
   const proModal = useProModal();
   const router = useRouter();
@@ -32,7 +56,8 @@ const PhotoPage = () => {
     defaultValues: {
       prompt: "",
       amount: "1",
-      resolution: "512x512"
+      resolution: "512x512",
+      selectedPromptIndex: 0,
     }
   });
 
@@ -42,7 +67,10 @@ const PhotoPage = () => {
     try {
       setPhotos([]);
 
-      const response = await axios.post('/api/image', values);
+      const selectedPrompt = enhancedPrompts[values.selectedPromptIndex];
+      const updatedValues = { ...values, prompt: selectedPrompt };
+
+      const response = await axios.post('/api/image', updatedValues);
 
       const urls = response.data.map((image: { url: string }) => image.url);
 
@@ -61,7 +89,7 @@ const PhotoPage = () => {
   return (
     <div className="text-white">
       <Heading
-        title="Image Generation"
+        title="Image Generation (Beta)"
         description="Turn your prompt into an image."
         icon={ImageIcon}
         iconColor="text-pink-700"
@@ -82,7 +110,6 @@ const PhotoPage = () => {
               grid
               grid-cols-12
               gap-2
-              
             "
           >
             <FormField
@@ -160,6 +187,34 @@ const PhotoPage = () => {
                 </FormItem>
               )}
             />
+            <FormField
+              name="selectedPromptIndex"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem className="col-span-12 lg:col-span-6">
+                  <Select
+                    disabled={isLoading}
+                    onValueChange={field.onChange}
+                    value={field.value}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue>{enhancedPrompts[field.value]}</SelectValue>
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {enhancedPrompts.map((prompt, index) => (
+                        <SelectItem key={index} value={index}>
+                          {prompt}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </FormItem>
+              )}
+            />
+
             <Button className="col-span-12 lg:col-span-2 w-full" type="submit" disabled={isLoading} size="icon">
               Generate
             </Button>
@@ -198,4 +253,3 @@ const PhotoPage = () => {
 }
 
 export default PhotoPage;
-

@@ -31,7 +31,6 @@ import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
 
-
 const CodePage = () => {
   const router = useRouter();
   const proModal = useProModal();
@@ -74,7 +73,7 @@ const CodePage = () => {
   }, [messages]);
 
   return (
-    <div className="">
+    <div className="text-white">
       <Heading
         title="Code Generator"
         description="Developers rejoice, backup has arrived."
@@ -85,23 +84,24 @@ const CodePage = () => {
       <div className="px-4 lg:px-8">
         <div className="space-y-4 mt-4">
           {isLoading && (
-            <div className="p-8 rounded-lg w-full flex items-center justify-center bg-black/20">
+            <div className="p-8 rounded-lg w-full flex items-center justify-center bg-none">
               <Loader />
             </div>
           )}
           {messages.length === 0 && !isLoading && (
             <Empty2 label="Add some code or ask a code related question." />
           )}
-          <div className="flex flex-col-reverse gap-y-4" style={{ maxHeight: '400px', overflowY: 'auto' }} ref={messagesContainerRef}>
-            {messages.map((message) => (
+          <div className="flex flex-col gap-y-4" style={{ maxHeight: '400px', overflowY: 'auto' }} ref={messagesContainerRef}>
+            {messages.map((message, index) => (
               <div
-                key={message.content}
+                key={message.content + index}
                 className={cn(
-                  "p-8 w-full flex items-start gap-x-8 rounded-lg",
-                  message.role === "user" ? "bg-[skyblue]/20 border border-black/10" : "bg-",
+                  "p-8 w-full flex gap-x-8 rounded-lg",
+                  message.role === "user" ? "bg-white/10 text-[black] font-bold border border-black/10 justify-start" : "bg-black/10 text-white justify-end inline-block",
                 )}
+                
               >
-                {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
+                {message.role === "user" ? <UserAvatar /> : null}
                 <div className="relative">
                   <ReactMarkdown
                     components={{

@@ -12,14 +12,15 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-export async function POST(
-  req: Request
-) {
+export async function POST(req: Request) {
   try {
     const { userId } = auth();
     const body = await req.json();
-    const { prompt, amount = 1, resolution='512x512', } = body;
 
+    // Destructure the body with default values
+    const { prompt, amount = 1, resolution = '512x512', selectedPromptIndex } = body;
+
+    // Check for userId and API key
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
@@ -28,16 +29,12 @@ export async function POST(
       return new NextResponse("OpenAI API Key not configured.", { status: 500 });
     }
 
-    if (!prompt) {
-      return new NextResponse("Prompt is required", { status: 400 });
-    }
-    if (!amount) {
-      return new NextResponse("Amount is required", { status: 400 });
-    }
-    if (!resolution) {
-      return new NextResponse("Resolution is required", { status: 400 });
+    // Validate prompt, amount, and resolution
+    if (!prompt || !amount || !resolution) {
+      return new NextResponse("Prompt, amount, and resolution are required", { status: 400 });
     }
 
+    // Check subscription and API limits
     const freeTrial = await checkApiLimit();
     const isPro = await checkSubscription();
 
@@ -45,12 +42,17 @@ export async function POST(
       return new NextResponse("Free trial has expired. Please upgrade to pro.", { status: 403 });
     }
 
+    const selectedPrompt = enhancedPrompts[selectedPromptIndex];
+    const updatedPrompt = `${selectedPrompt}\n\n${prompt}`;
+
+    // Create image using OpenAI API
     const response = await openai.createImage({
-      prompt,
-      n: parseInt(amount,10),
-      size: resolution
+      prompt: updatedPrompt,
+      n: parseInt(amount, 10),
+      size: resolution,
     });
 
+    // Increment API limit for non-pro users
     if (!isPro) {
       await incrementApiLimit();
     }
@@ -60,4 +62,4 @@ export async function POST(
     console.log('[IMAGE_ERROR]', error);
     return new NextResponse("Internal Error", { status: 500 });
   }
-};
+}
