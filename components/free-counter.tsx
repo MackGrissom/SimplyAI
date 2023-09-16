@@ -52,11 +52,13 @@ const tools = [
 interface FreeCounterProps {
     apiLimitCount: number;
     isPro: boolean;
+    collapsed:boolean;
 };
 
 export const FreeCounter = ({
     apiLimitCount = 0,
     isPro = false,
+    collapsed,
 }: FreeCounterProps) => {
     const proModal = useProModal();
     const [mounted, setMounted] = useState(false);
@@ -75,7 +77,7 @@ export const FreeCounter = ({
 
     return (
 
-        <div className="px-3">
+        <div className={collapsed ? "hidden" : ""}>
             <Card className="bg-white/10 border-0">
                 <CardContent className="py-2">
                     <div className="text-center text-sm text-white mb-4 space-y-2">
@@ -96,7 +98,7 @@ export const FreeCounter = ({
                                 <div className=" align-center justify-items-start text-[white]">
                             <Rocket/> 
                             </div>
-                                Upgrade To Pro
+                                Upgrade
                                 </div>
                         </motion.button>
                     </div>

@@ -3,11 +3,8 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Montserrat } from "next/font/google";
 import {
-    ArrowLeftFromLine,
-    ArrowRightFromLine,
     Code,
     ImageIcon,
-    Languages,
     Laptop,
     LayoutDashboard,
     MessageSquare,
@@ -158,7 +155,8 @@ export const Sidebar = ({
                     ))}
                 </div>
             </div>
-            <FreeCounter apiLimitCount={apiLimitCount} isPro={isPro} />
+            <FreeCounter apiLimitCount={apiLimitCount} isPro={isPro} 
+           collapsed={collapsed}/>
             <div
                 className={`flex items-center justify-${collapsed ? "center" : "end"
                     } h-12 cursor-pointer ${collapsed ? "w-16" : "w-60"}`}
