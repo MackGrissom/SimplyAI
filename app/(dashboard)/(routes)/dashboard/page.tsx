@@ -7,8 +7,7 @@ import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Code, ImageIcon, MessageSquare, Music, VideoIcon } from "lucide-react";
-import { tools } from "@/constants";
-import Brain2 from "@/components/animation/brain2";
+
 
 import Image from "next/image";
 import { Loader } from "@/components/loader";
@@ -72,7 +71,7 @@ export default function HomePage() {
     },
 
     {
-      label: 'Learn About UnifyAI',
+      label: 'Learn About SimplyAI',
       icon: Brain,
       href: '/about',
       color: "text-pink-500",
@@ -86,7 +85,7 @@ export default function HomePage() {
       <div className="mb-8 space-y-4 overflow-hidden">
         {/* Heading, animated */}
         <div className="overflow-hidden flex items-center justify-center pt-2">
-          <Image src="/logo1.png" alt="Logo" className="w-10 h-10 mr-2" width={10} height={10} />
+          <Image src="/slogo.png" alt="Logo" className="w-10 h-10 mr-2" width={10} height={10} />
           <div
             className="bg-gradient-to-tr from-black to-sky-400 inline-block"
             style={{
@@ -96,13 +95,13 @@ export default function HomePage() {
             }}
           >
             <h2 className="py-4 text-2xl md:text-5xl font-bold text-center text-white">
-              UnifyAI
+              SimplyAI
             </h2>
           </div>
         </div>
         <div className="flex justify-center items-center">
           <p className="text-center text-white text-sm md:text-lg font-medium p-4 rounded-lg inline-block drop-shadow-lg">
-            Welcome to your Dashboard
+            Welcome to your dashboard, unleash the power of AI..
           </p>
         </div>
       </div>

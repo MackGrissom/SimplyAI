@@ -1,15 +1,15 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { ClerkProvider } from '@clerk/nextjs'
-import { Space_Grotesk } from 'next/font/google'
+import { Advent_Pro, Comic_Neue, Lato, Space_Grotesk, Ubuntu } from 'next/font/google'
 import { ModalProvider } from '@/components/modal-provider'
 import { ToasterProvider } from '@/components/toaster-provider'
 import { CrispChat } from '@/components/crisp-chat'
 
-const font = Space_Grotesk({ subsets: ['latin'] })
+const font = Lato({ subsets: ['latin'], weight:'400' })
 
 export const metadata: Metadata = {
-  title: 'UnifyAI',
+  title: 'SimplyAI',
   description: 'AI ToolKit',
 }
 

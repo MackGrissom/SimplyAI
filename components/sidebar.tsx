@@ -38,7 +38,7 @@ const routes = [
         color: "text-sky-500",
     },
     {
-        label: "UnifyGPT",
+        label: "SimplyGPT",
         icon: MessageSquare,
         href: "/conversation",
         color: "text-violet-500",
@@ -111,7 +111,7 @@ export const Sidebar = ({
                     {collapsed ? (
                         <LogoImage
                             alt="Logo"
-                            src="/logo1.png"
+                            src="/slogo.png"
                             width={32}
                             height={32}
                         />
@@ -120,12 +120,12 @@ export const Sidebar = ({
                             <div className="relative h-8 w-8 mr-4">
                                 <LogoImage
                                     alt="Logo"
-                                    src="/logo1.png"
+                                    src="/slogo.png"
                                     width={64}
                                     height={64}
                                 />
                             </div>
-                            <h1 className={cn("text-4xl font-bold")}>UnifyAI</h1>
+                            <h1 className={cn("text-4xl font-bold")}>SimplyAI</h1>
                         </>
                     )}
                 </Link>

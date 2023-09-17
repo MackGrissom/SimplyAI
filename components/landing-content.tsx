@@ -10,13 +10,13 @@ const testimonials = [
       name: "Amanda",
       avatar: "A",
       title: "Marketing Specialist",
-      description: "As a marketing specialist, UnifiedAI has been a game-changer for me. From generating advertisement copy snippets to creating captivating descriptions for our products, it has improved my content creation process. It's like having a dedicated team of developers, designers and googlers at my fingertips. Totally recommended!"
+      description: "As a marketing specialist, SimplyAI has been a game-changer for me. From generating advertisement copy snippets to creating captivating descriptions for our products, it has improved my content creation process. It's like having a dedicated team of developers, designers and non-stop googlers at my fingertips. Totally recommended!"
     },
     {
       name: "Max",
       avatar: "M",
       title: "Content Creator",
-      description: "I couldn't believe how much time and effort this AI toolkit saved me. As a content creator, I used to struggle with writer's block and video editing, but now, the chatbot helps me brainstorm ideas, and the video and audio generators create stunning content effortlessly. My productivity has skyrocketed, and my audience loves the new engaging content!"
+      description: "I couldn't believe how much time and effort this AI toolkit saved me & it's cheaper than ChatGPT?! As a content creator, I used to struggle with writer's block, but now, the chatbot helps me brainstorm ideas, and the video and audio generators create unique content effortlessly. My productivity has skyrocketed, and my audience loves the new engaging content!"
     },
     {
       name: "Sophia",

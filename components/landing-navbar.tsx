@@ -17,10 +17,10 @@ export const LandingNavbar = () => {
         <nav className="p-4 bg-transparent flex items-center justify-between">
             <Link href='/' className='flex items-center'>
                 <div className="relative h-8 w-8 items-center">
-                    <Image fill alt='logo' src='/logo1.png' />
+                    <Image fill alt='logo' src='/slogo.png' />
                 </div>
                 <h1 className={cn('text-2xl font-bolt text-white', font.className)}>
-                    UnifyAI
+                    SimplyAI
                 </h1>
             </Link>
             <Banner />
