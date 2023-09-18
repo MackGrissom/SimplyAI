@@ -116,7 +116,7 @@ export const Sidebar = ({
                                     height={64}
                                 />
                             </div>
-                            <h1 className={cn("text-4xl font-bold")}>SimplyAI</h1>
+                            <h1 className={cn("text-3xl font-bold")}>SimplyAI</h1>
                         </>
                     )}
                 </Link>
