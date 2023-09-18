@@ -1,7 +1,6 @@
 'use client'
 import React, { useState } from "react";
 import Link from "next/link";
-import { Montserrat } from "next/font/google";
 import {
     Code,
     ImageIcon,
@@ -9,14 +8,9 @@ import {
     LayoutDashboard,
     MessageSquare,
     MoveLeft,
-    MoveLeftIcon,
     MoveRightIcon,
     Music,
-    PlusCircle,
     Settings,
-    SidebarClose,
-    SidebarOpen,
-    SidebarOpenIcon,
     VideoIcon,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
@@ -24,9 +18,6 @@ import Image from "next/image"; // Import the Image component
 
 import { cn } from "@/lib/utils";
 import { FreeCounter } from "@/components/free-counter";
-import { Button } from "./ui/button";
-import { SheetClose } from "./ui/sheet";
-import { ArrowLongLeftIcon, ChevronDoubleLeftIcon, ChevronDoubleRightIcon } from "@heroicons/react/20/solid";
 
 
 
