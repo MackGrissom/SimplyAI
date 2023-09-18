@@ -94,7 +94,7 @@ const CodePage = () => {
           <div className="flex flex-col gap-y-4" style={{ maxHeight: '400px', overflowY: 'auto' }} ref={messagesContainerRef}>
             {messages.map((message, index) => (
               <div
-                key={message.content + index}
+              key={(message.content || '') + index}
                 className={cn(
                   "p-8 w-full flex gap-x-8 rounded-lg",
                   message.role === "user" ? "bg-white/10 text-[black] font-bold border border-black/10 justify-start" : "bg-black/10 text-white justify-end inline-block",

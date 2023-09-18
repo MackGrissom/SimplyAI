@@ -10,13 +10,18 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-export async function POST(
-  req: Request
-) {
+// Function to count tokens in a string
+function countTokens(text: string): number {
+  // Split the text into words and count the number of words
+  const words = text.split(/\s+/);
+  return words.length;
+}
+
+export async function POST(req: Request) {
   try {
     const { userId } = auth();
     const body = await req.json();
-    const { messages  } = body;
+    const { messages } = body;
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
@@ -37,9 +42,25 @@ export async function POST(
       return new NextResponse("Free trial has expired. Please upgrade to pro to continue using Unify.", { status: 403 });
     }
 
+    // Calculate the total token count of the messages
+    let totalTokens = 0;
+    const truncatedMessages = [];
+
+    for (const message of messages) {
+      const messageTokens = countTokens(message.role + ": " + message.content);
+      totalTokens += messageTokens;
+
+      // Check if adding the message exceeds the token limit
+      if (totalTokens <= 4096) { // Token limit for gpt-3.5-turbo
+        truncatedMessages.push(message);
+      } else {
+        break; // Stop adding messages if we exceed the token limit
+      }
+    }
+
     const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
-      messages
+      messages: truncatedMessages,
     });
 
     if (!isPro) {
@@ -48,7 +69,7 @@ export async function POST(
 
     return NextResponse.json(response.data.choices[0].message);
   } catch (error) {
-    console.log('[CONVERSATION_ERROR]', error);
+    console.error('[CONVERSATION_ERROR]', error);
     return new NextResponse("Internal Error", { status: 500 });
   }
-};
+}

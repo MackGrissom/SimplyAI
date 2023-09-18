@@ -95,8 +95,8 @@ export const ProModal = () => {
                 <DialogHeader>
                     <DialogTitle className="flex justify-center items-center flex-col gap-y-4 pb-2">
                         <div className="flex items-center gap-x-2 font-bold py-1">
-                            Upgrade to UnifyAI
-                            <Badge className="uppercase text-sm py-1  bg-gradient-to-r from-slate-500 to-sky-500  outline outline-1 outline-[black] h-8 font-extrabold ">
+                            Upgrade to SimplyAI
+                            <Badge className="uppercase text-sm py-1  bg-gradient-to-r from-slate-500 to-[skyblue] outline outline-1 outline-[black] h-8 font-extrabold ">
                                 Pro
                             </Badge>
                         </div>
@@ -121,13 +121,13 @@ export const ProModal = () => {
                     <motion.button
                         onClick={onSubscribe}
                         disabled={loading}
-                        className="bg-gradient-to-t from-slate-500 to-sky-500  outline outline-1 outline-[black] h-[50px] font-extrabold text-lg text-[white]"
+                        className="w-full bg-gradient-to-t from-slate-500 to-[skyblue] outline outline-1 outline-[black] h-[50px] font-extrabold text-lg text-[white]"
                         whileHover={{
                             scale: 1.0, // Increase the size on hover
                             boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)', // Add a subtle box shadow
                         }}
                     >
-                        <span className="w-4 ml-2 fill-white h-4 ">&#9889;</span>
+                        <span className="w-full ml-2 fill-white h-4 ">&#9889;</span>
                         Upgrade
                     </motion.button>
                 </DialogFooter>
