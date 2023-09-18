@@ -146,7 +146,7 @@ export default function HomePage() {
             >
               <Card
                 onClick={() => router.push(tool.href)}
-                className=" border-black/5 flex items-center justify-between  transition cursor-pointer  text-[white] bg-[white]/10"
+                className=" border-black/5 flex items-center justify-between  transition cursor-pointer  text-[white] bg-[white]/20"
               >
                 <div className="flex items-center gap-x-4">
                   <div className={cn("p-2 w-fit rounded-md", tool.bgColor)}>
