@@ -3,11 +3,15 @@ import { UserAvatar } from "./user-avatar";
 import { BotAvatar } from "./bot-avatar";
 import { cn } from "@/lib/utils";
 
-const handleCopyClick = (content) => {
+const handleCopyClick = (content: string) => {
     clipboardCopy(content);
 };
+interface Message {
+    role: string; // Assuming role is a string, you can specify the actual type
+    content: string; // Assuming content is a string
+}
 
-const ChatBubble = ({ message }) => {
+const ChatBubble = ({ message }: { message: Message }) => {
     return (
         <div
             className={cn(
