@@ -1,6 +1,4 @@
-'use client'
 import React, { useState, useRef, useEffect } from 'react';
-
 import ClipboardJS from 'clipboard';
 import * as z from "zod";
 import axios from "axios";
@@ -8,7 +6,7 @@ import { Copy, MessageSquare } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { ChatCompletionRequestMessage } from "openai";
+import { ChatCompletionRequestMessage, ChatCompletionRequestMessageRoleEnum } from "openai"; // Import ChatCompletionRequestMessage and ChatCompletionRequestMessageRoleEnum
 
 import { BotAvatar } from "@/components/bot-avatar";
 import { Heading } from "@/components/heading";
@@ -16,7 +14,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
-import { cn } from "@/lib/utils";
 import { Loader } from "@/components/loader";
 import { UserAvatar } from "@/components/user-avatar";
 import { Empty } from "@/components/ui/empty";
@@ -25,6 +22,7 @@ import { useProModal } from "@/hooks/use-pro-modal";
 import { formSchema } from "./constants";
 import clipboardCopy from "clipboard-copy";
 import ChatBubble from '@/components/chat-bubble';
+
 const ConversationPage = () => {
   const router = useRouter();
   const proModal = useProModal();
@@ -48,7 +46,7 @@ const ConversationPage = () => {
       await new Promise((resolve) => setTimeout(resolve, 50)); // Adjust typing speed here (milliseconds)
       setMessages((prevMessages) => [
         ...prevMessages.slice(0, prevMessages.length - 1), // Remove "isTyping" message
-        { role: "bot", content: message.substring(0, i + 1) }, // Add partial message as bot response
+        { role: "bot" as ChatCompletionRequestMessageRoleEnum, content: message.substring(0, i + 1) }, // Add partial message as bot response
       ]);
     }
 
@@ -57,11 +55,11 @@ const ConversationPage = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      const userMessage: ChatCompletionRequestMessage = { role: "user", content: values.prompt };
+      const userMessage: ChatCompletionRequestMessage = { role: "user" as ChatCompletionRequestMessageRoleEnum, content: values.prompt };
       setMessages((prevMessages) => [
         ...prevMessages,
         userMessage,
-        { role: "bot", content: "Typing..." }, // Add "isTyping" message before the actual bot response
+        { role: "bot" as ChatCompletionRequestMessageRoleEnum, content: "Typing..." } as ChatCompletionRequestMessage, // Add "isTyping" message before the actual bot response
       ]);
 
       const response = await axios.post('/api/conversation', { messages: [...messages, userMessage] });
@@ -143,12 +141,10 @@ const ConversationPage = () => {
 
           {/* Wrap messages in a container with max height and overflow-y */}
           <div ref={messagesContainerRef} className="max-h-[60vh] overflow-y-auto space-y-4 pb-5">
-  {messages.map((message, index) => (
-    <ChatBubble key={index} message={message} />
-  ))}
-</div>
-
-
+            {messages.map((message, index) => (
+              <ChatBubble key={index} message={message} />
+            ))}
+          </div>
         </div>
       </div>
 
