@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useRef, useEffect } from 'react';
 import ClipboardJS from 'clipboard';
 import * as z from "zod";
