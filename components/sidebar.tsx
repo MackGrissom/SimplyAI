@@ -134,9 +134,12 @@ export const Sidebar = ({
                             )}
                         >
                             <div className="flex items-center flex-1">
-                                <span className="text-[skyblue]/60  hover:text-white hidden lg:flex">
-                                    {collapsed ? <MoveRightIcon /> : <MoveLeft />}
-                                </span>
+                                {route.icon && (
+                                    <route.icon
+                                        className={cn("h-5 w-5 mr-3", route.color)}
+                                    />
+                                )}
+                                {!collapsed && route.label}
                             </div>
                         </Link>
                     ))}
