@@ -2,6 +2,7 @@ import clipboardCopy from "clipboard-copy";
 import { UserAvatar } from "./user-avatar";
 import { BotAvatar } from "./bot-avatar";
 import { cn } from "@/lib/utils";
+import { ChatCompletionRequestMessage } from "openai"; // Adjust the import path as needed
 
 const handleCopyClick = (content: string) => {
     clipboardCopy(content);
@@ -11,7 +12,11 @@ interface Message {
     content: string; // Assuming content is a string
 }
 
-const ChatBubble = ({ message }: { message: Message }) => {
+const ChatBubble = ({ message }: { message?: ChatCompletionRequestMessage }) => {
+    if (!message || !message.content) {
+        return null; // or render an empty component or placeholder if message is undefined or has no content
+    }
+
     return (
         <div
             className={cn(
@@ -20,7 +25,7 @@ const ChatBubble = ({ message }: { message: Message }) => {
             )}
         >
             <span className="pr-2">
-            {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
+                {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
             </span>
             <div
                 className={cn(

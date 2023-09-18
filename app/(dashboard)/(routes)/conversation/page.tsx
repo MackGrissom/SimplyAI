@@ -41,9 +41,13 @@ const ConversationPage = () => {
 
   const isLoading = form.formState.isSubmitting;
 
-  const simulateTyping = async (message: string) => {
+  const simulateTyping = async (message: string | undefined) => {
+    if (message === undefined) {
+      return; // Do nothing if message is undefined
+    }
+  
     setIsTyping(true);
-
+  
     for (let i = 0; i < message.length; i++) {
       await new Promise((resolve) => setTimeout(resolve, 50)); // Adjust typing speed here (milliseconds)
       setMessages((prevMessages) => [
@@ -51,9 +55,11 @@ const ConversationPage = () => {
         { role: "bot" as ChatCompletionRequestMessageRoleEnum, content: message.substring(0, i + 1) }, // Add partial message as bot response
       ]);
     }
-
+  
     setIsTyping(false);
   };
+
+    
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
