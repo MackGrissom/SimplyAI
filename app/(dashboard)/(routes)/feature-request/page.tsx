@@ -55,7 +55,7 @@ export default function FeaturePage() {
 </div>
 
       <div className="min-h-screen flex items-center justify-center text-white w-[80%] absolute bottom-0 -mb-[25]">
-        <div className="bg-white/10 p-8 rounded shadow-lg w-96">
+        {/* <div className="bg-white/10 p-8 rounded shadow-lg w-96">
           <h1 className="text-2xl font-semibold mb-4">Submit a Feature Request</h1>
           <form onSubmit={handleSubmit(onSubmit)} className='mt-0 pt-0 bottom-0'>
             <div className="">
@@ -105,8 +105,12 @@ export default function FeaturePage() {
               Submit
             </button>
           </form>
-        </div>
+        </div> */}
+        
+        <p mailto='info@simplyai.pro'>Email us at: <a mailto='info@simplyai.pro' className='text-[skyblue]'>info@simplyai.pro</a></p>
       </div>
+  
+
     </div>
 
   );

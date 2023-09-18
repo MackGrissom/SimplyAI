@@ -152,7 +152,7 @@ export const Sidebar = ({
                     } h-12 cursor-pointer ${collapsed ? "w-16" : "w-60"}`}
                 onClick={() => setCollapsed(!collapsed)}
             >
-                <span className="text-[skyblue]/60  hover:text-white hidden lg:flex">
+                <span className="text-[skyblue]/60  hover:text-white hidden lg:flex absolute">
                     {collapsed ? <PanelRightClose /> : <PanelRightOpen />}
                 </span>
             </div>

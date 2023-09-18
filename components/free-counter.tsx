@@ -78,7 +78,7 @@ export const FreeCounter = ({
     return (
 
         <div className={collapsed ? "hidden" : ""}>
-            <Card className="bg-white/10 border-0 h-full">
+            <Card className="bg-transparent border-0 h-full">
                 <CardContent className="py-0">
                     <div className="text-center text-sm text-white mb-4 space-y-2">
                         <p> {apiLimitCount} / {MAX_FREE_COUNTS} Free Trial</p>
