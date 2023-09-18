@@ -107,7 +107,7 @@ export default function FeaturePage() {
           </form>
         </div> */}
         
-        <p mailto='info@simplyai.pro'>Email us at: <a mailto='info@simplyai.pro' className='text-[skyblue]'>info@simplyai.pro</a></p>
+        <p >Email us at: <a className='text-[skyblue]'>info@simplyai.pro</a></p>
       </div>
   
 
