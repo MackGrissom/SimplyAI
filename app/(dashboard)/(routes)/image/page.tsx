@@ -58,6 +58,11 @@ const PhotoPage = () => {
       amount: "1",
       resolution: "512x512",
       selectedPromptIndex: 0,
+    } as {
+      prompt: string;
+      amount: string;
+      resolution: string;
+      selectedPromptIndex: number;
     }
   });
 
@@ -67,7 +72,7 @@ const PhotoPage = () => {
     try {
       setPhotos([]);
 
-      const selectedPrompt = enhancedPrompts[values.selectedPromptIndex];
+      const selectedPrompt = enhancedPrompts[(values as { prompt: string; amount: string; resolution: string; selectedPromptIndex: number; }).selectedPromptIndex];
       const updatedValues = { ...values, prompt: selectedPrompt };
 
       const response = await axios.post('/api/image', updatedValues);
@@ -200,14 +205,15 @@ const PhotoPage = () => {
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue>{enhancedPrompts[field.value]}</SelectValue>
+                      <SelectValue>{enhancedPrompts[parseInt(field.value)]}</SelectValue>
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
                       {enhancedPrompts.map((prompt, index) => (
-                        <SelectItem key={index} value={index}>
-                          {prompt}
-                        </SelectItem>
+                        <SelectItem key={`${index}`} value={`${index}`}>
+                        {prompt}
+                      </SelectItem>
+                      
                       ))}
                     </SelectContent>
                   </Select>
