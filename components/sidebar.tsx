@@ -134,27 +134,23 @@ export const Sidebar = ({
                             )}
                         >
                             <div className="flex items-center flex-1">
-                                {route.icon && (
-                                    <route.icon
-                                        className={cn("h-5 w-5 mr-3", route.color)}
-                                        title={!collapsed ? route.label : undefined}
-                                    />
-                                )}
-                                {!collapsed && route.label}
+                                <span className="text-[skyblue]/60  hover:text-white hidden lg:flex">
+                                    {collapsed ? <MoveRightIcon /> : <MoveLeft />}
+                                </span>
                             </div>
                         </Link>
                     ))}
                 </div>
             </div>
-            <FreeCounter apiLimitCount={apiLimitCount} isPro={isPro} 
-           collapsed={collapsed}/>
+            <FreeCounter apiLimitCount={apiLimitCount} isPro={isPro}
+                collapsed={collapsed} />
             <div
                 className={`flex items-center justify-${collapsed ? "center" : "end"
                     } h-12 cursor-pointer ${collapsed ? "w-16" : "w-60"}`}
                 onClick={() => setCollapsed(!collapsed)}
             >
                 <span className="text-[skyblue]/60  hover:text-white hidden lg:flex">
-                {collapsed ? <MoveRightIcon/> : <MoveLeft/>}
+                    {collapsed ? <MoveRightIcon /> : <MoveLeft />}
                 </span>
             </div>
         </div>
