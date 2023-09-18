@@ -12,7 +12,7 @@ interface Tier {
     name: string;
     id: string;
     href: string;
-    price: { monthly: string; annually: string };
+    price: { [key: string]: string }; // Use a flexible type for price
     startingAt: string;
     description: string;
     features: string[];
