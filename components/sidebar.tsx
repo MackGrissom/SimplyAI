@@ -7,9 +7,9 @@ import {
     Laptop,
     LayoutDashboard,
     MessageSquare,
-    MoveLeft,
-    MoveRightIcon,
     Music,
+    PanelRightClose,
+    PanelRightOpen,
     Settings,
     VideoIcon,
 } from "lucide-react";
@@ -153,7 +153,7 @@ export const Sidebar = ({
                 onClick={() => setCollapsed(!collapsed)}
             >
                 <span className="text-[skyblue]/60  hover:text-white hidden lg:flex">
-                    {collapsed ? <MoveRightIcon /> : <MoveLeft />}
+                    {collapsed ? <PanelRightClose /> : <PanelRightOpen />}
                 </span>
             </div>
         </div>
