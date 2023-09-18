@@ -123,8 +123,8 @@ const CodePage = () => {
                         const language = props.className ? props.className.replace('language-', '') : '';
                         return (
                           <SyntaxHighlighter language={language} style={okaidia} className="rounded-lg p-1">
-                            {props.children}
-                          </SyntaxHighlighter>
+                          {props.children.toString()}
+                        </SyntaxHighlighter>
                         );
                       },
                     }}
