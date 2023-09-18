@@ -62,7 +62,7 @@ const PhotoPage = () => {
       prompt: string;
       amount: string;
       resolution: string;
-      selectedPromptIndex: number;
+      selectedPromptIndex: 0;
     }
   });
 
@@ -205,21 +205,19 @@ const PhotoPage = () => {
                   >
                     <FormControl>
                       <SelectTrigger>
-                      <SelectValue>{enhancedPrompts[parseInt(field.value)]}</SelectValue>
+                        <SelectValue>{enhancedPrompts[parseInt(field.value)]}</SelectValue>
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
                       {enhancedPrompts.map((prompt, index) => (
                         <SelectItem key={`${index}`} value={`${index}`}>
-                        {prompt}
-                      </SelectItem>
-                      
+                          {prompt}
+                        </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
                 </FormItem>
-              )}
-            />
+              )} />
 
             <Button className="col-span-12 lg:col-span-2 w-full" type="submit" disabled={isLoading} size="icon">
               Generate
