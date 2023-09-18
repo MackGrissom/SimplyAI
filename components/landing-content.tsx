@@ -2,41 +2,16 @@
 
 import Features from "./features";
 import Pricing from "./pricing";
-import Testimonials from "./testimonial";
+
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
-const testimonials = [
-    {
-      name: "Amanda",
-      avatar: "A",
-      title: "Marketing Specialist",
-      description: "As a marketing specialist, SimplyAI has been a game-changer for me. From generating advertisement copy snippets to creating captivating descriptions for our products, it has improved my content creation process. It's like having a dedicated team of developers, designers and non-stop googlers at my fingertips. Totally recommended!"
-    },
-    {
-      name: "Max",
-      avatar: "M",
-      title: "Content Creator",
-      description: "I couldn't believe how much time and effort this AI toolkit saved me & it's cheaper than ChatGPT?! As a content creator, I used to struggle with writer's block, but now, the chatbot helps me brainstorm ideas, and the video and audio generators create unique content effortlessly. My productivity has skyrocketed, and my audience loves the new engaging content!"
-    },
-    {
-      name: "Sophia",
-      avatar: "S",
-      title: "Web Developer",
-      description: "I use the code generator every single day. With that alone, this AI toolkit has exceeded my expectations. The code generation feature has become an essential part of my daily development workflow, enabling me to create complex code snippets in seconds. It's like having a jr dev with me at all times.."
-    },
-    {
-      name: "David",
-      avatar: "D",
-      title: "UX/UI Designer",
-      description: "I'm amazed by the versatility of this AI toolkit. As a UX/UI designer, I rely heavily on visual elements. The video and audio generation features allow me to create stunning multimedia components without the need for expensive software or external help. It's been a real game-changer for my design projects!"
-    }
-  ];
+
 
 const LandingContent = () => {
     return (
         <div className="px-10 pb-20">
   
-          {/* <Testimonials /> */}
+          {/* */}
             {/* <h2 className="text-center text-4xl text-white font-extrabold mb-10">
                 Testimonials
             </h2>
