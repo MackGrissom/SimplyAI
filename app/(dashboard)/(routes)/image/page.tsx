@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Download, ImageIcon } from "lucide-react";
-import { useForm } from "react-hook-form";
+import { useForm, Control, UseFormReset  } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
@@ -20,6 +20,15 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useProModal } from "@/hooks/use-pro-modal";
 
 import { amountOptions, formSchema, resolutionOptions } from "./constants";
+
+
+type FormValues = {
+  prompt: string;
+  amount: string;
+  resolution: string;
+  selectedPromptIndex: number;
+};
+
 
 // Define an array of enhanced prompts
 const enhancedPrompts = [
@@ -45,6 +54,8 @@ const enhancedPrompts = [
   "Craft images that depict futuristic cities integrated seamlessly with natural elements.",
   // Add more prompts here
 ];
+
+
 
 const PhotoPage = () => {
   const proModal = useProModal();
@@ -192,32 +203,10 @@ const PhotoPage = () => {
                 </FormItem>
               )}
             />
-            <FormField
-              name="selectedPromptIndex"
-              control={form.control}
-              render={({ field }) => (
-                <FormItem className="col-span-12 lg:col-span-6">
-                  <Select
-                    disabled={isLoading}
-                    onValueChange={field.onChange}
-                    value={field.value}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue>{enhancedPrompts[parseInt(field.value)]}</SelectValue>
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {enhancedPrompts.map((prompt, index) => (
-                        <SelectItem key={`${index}`} value={`${index}`}>
-                          {prompt}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </FormItem>
-              )} />
+        
+
+
+
 
             <Button className="col-span-12 lg:col-span-2 w-full" type="submit" disabled={isLoading} size="icon">
               Generate
