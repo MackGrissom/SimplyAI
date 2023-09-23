@@ -1,12 +1,27 @@
 "use client";
 
-import { ArrowBigRightDash, ArrowRight, BarChart3, Brain, BrainCircuit, Bug, BugIcon, CalendarSearch, File, GoalIcon, HelpCircle, Terminal } from "lucide-react";
+
+import {
+  ConversationIcon,
+  AboutIcon,
+  ArrowRightIcon,
+  BugIcon,
+  CodeIcon,
+  CollapseLeftIcon,
+  CollapseRightIcon,
+  DashboardIcon,
+  FeatureIcon,
+  ImageIcon,
+  MusicIcon,
+  SettingsIcon,
+  VideoIcon,
+} from '@/components/icons';
+
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { Code, ImageIcon, MessageSquare, Music, VideoIcon } from "lucide-react";
+
 
 
 import Image from "next/image";
@@ -17,21 +32,21 @@ export default function HomePage() {
   const tools = [
     {
       label: 'Conversation Model',
-      icon: MessageSquare,
+      icon: ConversationIcon,
       href: '/conversation',
       color: "text-violet-500",
       bgColor: "bg-violet-500/10",
     },
     {
       label: 'Coding Assistant',
-      icon: Code,
+      icon: CodeIcon,
       color: "text-green-700",
       bgColor: "bg-green-700/10",
       href: '/code',
     },
     {
       label: 'Music Generator (In Beta)',
-      icon: Music,
+      icon: MusicIcon,
       href: '/music',
       color: "text-emerald-500",
       bgColor: "bg-emerald-500/10",
@@ -57,7 +72,7 @@ export default function HomePage() {
     },
     {
       label: 'Request A Feature',
-      icon: Terminal,
+      icon: FeatureIcon,
       href: '/feature-request',
       color: "text-sky-500",
       bgColor: "bg-sky-500/10",
@@ -72,7 +87,7 @@ export default function HomePage() {
 
     {
       label: 'Learn About SimplyAI',
-      icon: Brain,
+      icon: AboutIcon,
       href: '/about',
       color: "text-pink-500",
       bgColor: "bg-pink-500/10",
@@ -119,17 +134,17 @@ export default function HomePage() {
             >
               <Card
                 onClick={() => router.push(tool.href)}
-                className=" border-black/5 flex items-center justify-between hover:shadow-sm transition cursor-pointer bg-[white]/20  text-[white] "
+                className=" border-black/5 flex items-center justify-between hover:shadow-sm transition cursor-pointer bg-[black]/80  text-[white] "
               >
                 <div className="flex items-center gap-x-4">
                   <div className={cn("p-2 w-fit rounded-md", tool.bgColor)}>
-                    <tool.icon className={cn("w-8 h-8", tool.color)} />
+                    <tool.icon />
                   </div>
-                  <div className={cn(`font-semibold hover:bg-[${tool.bgColor}]`)}>
+                  <div className={cn(`font-semibold`)}>
                     {tool.label}
                   </div>
                 </div>
-                <ArrowBigRightDash className="w-5 h-5" />
+                
               </Card>
             </motion.div>
           ))}
@@ -146,17 +161,18 @@ export default function HomePage() {
             >
               <Card
                 onClick={() => router.push(tool.href)}
-                className=" border-black/5 flex items-center justify-between  transition cursor-pointer  text-[white] bg-[white]/20"
+                className=" border-black/5 flex items-center justify-between  transition cursor-pointer  text-[white] bg-[black]/80"
               >
                 <div className="flex items-center gap-x-4">
                   <div className={cn("p-2 w-fit rounded-md", tool.bgColor)}>
-                    <tool.icon className={cn("w-8 h-8", tool.color)} />
+                    <tool.icon/>
                   </div>
-                  <div className={cn(`font-semibold hover:bg-[${tool.bgColor}]`)}>
+                  <div className={cn(`font-semibold`)}>
                     {tool.label}
                   </div>
                 </div>
-                <ArrowBigRightDash className="w-5 h-5" />
+                
+                
               </Card>
             </motion.div>
           ))}

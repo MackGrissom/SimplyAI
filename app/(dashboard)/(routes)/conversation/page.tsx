@@ -49,7 +49,7 @@ const ConversationPage = () => {
     setIsTyping(true);
   
     for (let i = 0; i < message.length; i++) {
-      await new Promise((resolve) => setTimeout(resolve, 50)); // Adjust typing speed here (milliseconds)
+      await new Promise((resolve) => setTimeout(resolve, 8)); // Adjust typing speed here (milliseconds)
       setMessages((prevMessages) => [
         ...prevMessages.slice(0, prevMessages.length - 1), // Remove "isTyping" message
         { role: "bot" as ChatCompletionRequestMessageRoleEnum, content: message.substring(0, i + 1) }, // Add partial message as bot response
@@ -132,7 +132,7 @@ const ConversationPage = () => {
 
   return (
     <div className="text-white font-bold">
-      <div className='bg-[black]/30 rounded-lg'>
+      <div className='bg-[black]/80 rounded-lg'>
         <Heading
           title="Let's Talk"
           description="Learn, consult and grow alongside our most advanced conversation model."

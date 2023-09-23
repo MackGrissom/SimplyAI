@@ -15,19 +15,39 @@ export const LandingHero = () => {
         <>
             <div className="text-white font-bold py-36 text-center space-y-5">
                 <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl space-y-5 font-extrabold">
-                    <h1 className="capitalize">An All-In-One AI Toolkit</h1>
+                    <h1 className="capitalize">The Ultimate AI Toolkit</h1>
                     <div className="text-[skyblue] text-3xl sm:text-3xl md:text-4xl lg:5xl">
                         <TypewriterComponent
                             options={{
                                 strings: [
-                                    'AI Chatbot.',
-                                    'Code Generator.',
-                                    'Art, Photo, Video & Audio Generator.',
+                                    'AI Chatbot',
+                                    'Code Generation',
+                                    'Media Creation (Art, Photo, Video, Audio)',
                                     'Text-to-Speech',
-                                    'Email & Blog Writing.',
-                                    'Brainstorming',
-                                    'Unlock Unlimited Potential',
-                                ],
+                                    'Content Writing (Emails, Blogs)',
+                                    'Idea Generation',
+                                    'Language Translation',
+                                    'Data Analysis',
+                                    'Question Answering',
+                                    'Virtual Tutoring',
+                                    'Content Summarization',
+                                    'Language Generation',
+                                    'Sentiment Analysis',
+                                    'Speech Recognition',
+                                    'Image Recognition',
+                                    'Recommendation Systems',
+                                    'Data Generation',
+                                    'Customer Support Automation',
+                                    'Document Automation',
+                                    'Language Correction',
+                                    'Virtual Assistant',
+                                    'Research Assistance',
+                                    'Game Development',
+                                    'Simulations',
+                                    'Medical Diagnosis',
+                                    'Financial Analysis',
+                                    'Content Curation',
+                                    'And More...',                                ],
                                 autoStart: true,
                                 loop: true,
                             }}
@@ -35,7 +55,7 @@ export const LandingHero = () => {
                     </div>
                 </div>
                 <div className="text-sm md:text-xl font-light">
-                    10x Content Generation. Automate repetitive tasks. Optimize workflows and streamline processes.
+                SimplyAI: Powering 10x Content Generation, Automation, and Workflow Optimization.
                 </div>
                 <div className="flex flex-row flex-wrap content-around justify-center items-end gap-3">
                     <Link href={isSignedIn ? '/dashboard' : '/sign-up'}>
