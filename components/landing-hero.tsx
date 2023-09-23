@@ -15,7 +15,7 @@ export const LandingHero = () => {
         <>
             <div className="text-white font-bold py-36 text-center space-y-5">
                 <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl space-y-5 font-extrabold">
-                    <h1 className="capitalize">The All-In-One AI Toolkit</h1>
+                    <h1 className="capitalize">An All-In-One AI Toolkit</h1>
                     <div className="text-[skyblue] text-3xl sm:text-3xl md:text-4xl lg:5xl">
                         <TypewriterComponent
                             options={{

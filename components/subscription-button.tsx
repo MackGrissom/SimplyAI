@@ -30,6 +30,7 @@ export const SubscriptionButton = ({
     return (
         
         <Button
+            className=''
             disabled={loading}
             onClick={onClick}
             variant={isPro ? "default" : "premium"}>

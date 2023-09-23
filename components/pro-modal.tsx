@@ -29,7 +29,7 @@ import { cn } from "@/lib/utils";
 
 const tools = [
     {
-        label: 'UnifyChat Conversation Model',
+        label: 'SimplyAI Conversation Model',
         icon: MessageSquare,
         color: "text-violet-500",
         bgColor: "bg-violet-500/10",

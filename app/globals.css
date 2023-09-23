@@ -146,3 +146,21 @@ color: black;
 
 
 /* chatbox on conversation page */
+
+
+
+/* Hide the scrollbar for all scrollable elements */
+.hide-scrollbar::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+/* Hide scrollbar track */
+.hide-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Hide scrollbar thumb */
+.hide-scrollbar::-webkit-scrollbar-thumb {
+  background: transparent;
+  border: none;
+}

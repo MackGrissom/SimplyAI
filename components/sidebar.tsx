@@ -41,19 +41,19 @@ const routes = [
         href: "/code",
     },
     {
-        label: "Image Generator",
+        label: "Image",
         icon: ImageIcon,
         color: "text-pink-700",
         href: "/image",
     },
     {
-        label: "Video Generator",
+        label: "Video (Coming Soon)",
         icon: VideoIcon,
         color: "text-orange-700",
         href: "/video",
     },
     {
-        label: "Music Generator",
+        label: "Music",
         icon: Music,
         color: "text-emerald-500",
         href: "/music",
@@ -145,17 +145,17 @@ export const Sidebar = ({
                     ))}
                 </div>
             </div>
-            <FreeCounter apiLimitCount={apiLimitCount} isPro={isPro}
-                collapsed={collapsed} />
             <div
                 className={`flex items-center justify-${collapsed ? "center" : "end"
-                    } h-12 cursor-pointer ${collapsed ? "w-16" : "w-60"}`}
+            } h-12 cursor-pointer ${collapsed ? "w-16" : "w-60"}`}
                 onClick={() => setCollapsed(!collapsed)}
             >
-                <span className="text-[skyblue]/60  hover:text-white hidden lg:flex absolute">
+                <span className="text-[skyblue]/60  hover:text-white hidden lg:flex absolute bottom-0">
                     {collapsed ? <PanelRightClose /> : <PanelRightOpen />}
                 </span>
             </div>
+            <FreeCounter apiLimitCount={apiLimitCount} isPro={isPro}
+                collapsed={collapsed} />
         </div>
     );
 };

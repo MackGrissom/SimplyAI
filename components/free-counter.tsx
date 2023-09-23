@@ -10,45 +10,6 @@ import { motion } from 'framer-motion';
 import { useProModal } from "@/hooks/use-pro-modal";
 
 
-
-const tools = [
-    {
-        label: 'Conversation',
-        icon: MessageSquare,
-        href: '/conversation',
-        color: "text-violet-500",
-        bgColor: "bg-violet-500/10",
-    },
-    {
-        label: 'Audio Generation',
-        icon: Music,
-        href: '/music',
-        color: "text-emerald-500",
-        bgColor: "bg-emerald-500/10",
-    },
-    {
-        label: 'Image Generation',
-        icon: ImageIcon,
-        color: "text-pink-700",
-        bgColor: "bg-pink-700/10",
-        href: '/image',
-    },
-    {
-        label: 'Video Generation',
-        icon: VideoIcon,
-        color: "text-orange-700",
-        bgColor: "bg-orange-700/10",
-        href: '/video',
-    },
-    {
-        label: 'Code Generation',
-        icon: Code,
-        color: "text-green-700",
-        bgColor: "bg-green-700/10",
-        href: '/code',
-    },
-];
-
 interface FreeCounterProps {
     apiLimitCount: number;
     isPro: boolean;
@@ -78,7 +39,7 @@ export const FreeCounter = ({
     return (
 
         <div className={collapsed ? "hidden" : ""}>
-            <Card className="bg-transparent border-0 h-full">
+            <Card className="bg-transparent border-0 h-full w-[95%]">
                 <CardContent className="py-0">
                     <div className="text-center text-sm text-white mb-4 space-y-2">
                         <p> {apiLimitCount} / {MAX_FREE_COUNTS} Free Trial</p>

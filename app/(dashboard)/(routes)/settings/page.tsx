@@ -17,13 +17,19 @@ const SettingsPage = async () => {
         bgColor="bg-gray-700/10"
       />
       <div className="px-4 lg:px-8 space-y-4">
-        <div className="text-muted-foreground text-sm">
+        <div className="text-white text-lg">
           {isPro ? "You are currently on a Pro plan." : "You are currently on a free plan."}
         </div>
+
+<div className="text-white-foreground"> 
+  Thanks for choosing SimplyAI. For customer support please &nbsp;
+  <a href="mailto:support@simplyai.pro" className="text-[blue]/90  hover:underline">email us</a> &nbsp; or use the chatbot below. 
+</div>
+
         <SubscriptionButton isPro={isPro} />
       </div>
     </div>
-   );
+    );
 }
- 
+
 export default SettingsPage;
