@@ -13,13 +13,13 @@ import { useProModal } from "@/hooks/use-pro-modal";
 interface FreeCounterProps {
     apiLimitCount: number;
     isPro: boolean;
-    collapsed:boolean;
+   
 };
 
 export const FreeCounter = ({
     apiLimitCount = 0,
     isPro = false,
-    collapsed,
+
 }: FreeCounterProps) => {
     const proModal = useProModal();
     const [mounted, setMounted] = useState(false);
@@ -38,7 +38,7 @@ export const FreeCounter = ({
 
     return (
 
-        <div className={collapsed ? "hidden" : ""}>
+        <div className=''>
             <Card className="bg-transparent border-0 h-full w-[95%]">
                 <CardContent className="py-0">
                     <div className="text-center text-sm text-white mb-4 space-y-2">
