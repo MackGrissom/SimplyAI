@@ -1,4 +1,5 @@
 import Banner from "@/components/banner"
+import Footer from "@/components/footer"
 import LandingContent from "@/components/landing-content"
 import { LandingHero } from "@/components/landing-hero"
 import { LandingNavbar } from "@/components/landing-navbar"
@@ -12,6 +13,7 @@ const LandingPage = () => {
       
       <LandingHero />
       <LandingContent/>
+      <Footer/>
     </div>
 
   )

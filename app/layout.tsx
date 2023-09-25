@@ -5,6 +5,7 @@ import { Advent_Pro, Comic_Neue, Lato, Space_Grotesk, Ubuntu } from 'next/font/g
 import { ModalProvider } from '@/components/modal-provider'
 import { ToasterProvider } from '@/components/toaster-provider'
 import { CrispChat } from '@/components/crisp-chat'
+import Footer from '@/components/footer'
 
 const font = Lato({ subsets: ['latin'], weight:'400' })
 
@@ -27,6 +28,7 @@ export default function RootLayout({
           <ToasterProvider/>
           {children}
         </body>
+        
       </html>
     </ClerkProvider>
   )

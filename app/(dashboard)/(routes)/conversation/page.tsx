@@ -4,25 +4,19 @@ import React, { useState, useRef, useEffect } from 'react';
 import ClipboardJS from 'clipboard';
 import * as z from "zod";
 import axios from "axios";
-import { Copy, MessageSquare } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { ChatCompletionRequestMessage, ChatCompletionRequestMessageRoleEnum } from "openai"; // Import ChatCompletionRequestMessage and ChatCompletionRequestMessageRoleEnum
-
-import { BotAvatar } from "@/components/bot-avatar";
+import { ChatCompletionRequestMessage, ChatCompletionRequestMessageRoleEnum } from "openai"; 
 import { Heading } from "@/components/heading";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
-import { Loader } from "@/components/loader";
-import { UserAvatar } from "@/components/user-avatar";
 import { Empty } from "@/components/ui/empty";
 import { useProModal } from "@/hooks/use-pro-modal";
-
 import { formSchema } from "./constants";
-import clipboardCopy from "clipboard-copy";
 import ChatBubble from '@/components/chat-bubble';
 
 const ConversationPage = () => {

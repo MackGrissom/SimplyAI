@@ -116,7 +116,7 @@ export default function HomePage() {
         </div>
         <div className="flex justify-center items-center">
           <p className="text-center text-white text-sm md:text-lg font-medium p-4 rounded-lg inline-block drop-shadow-lg">
-            Welcome to your dashboard, unleash the power of AI..
+            AI In The Palm Of Your Hand
           </p>
         </div>
       </div>
@@ -134,7 +134,7 @@ export default function HomePage() {
             >
               <Card
                 onClick={() => router.push(tool.href)}
-                className=" border-black/5 flex items-center justify-between hover:shadow-sm transition cursor-pointer bg-[black]/80  text-[white] "
+                className=" border-black/5 flex items-center justify-between hover:shadow-sm transition cursor-pointer bg-[white]/20  text-[white] "
               >
                 <div className="flex items-center gap-x-4">
                   <div className={cn("p-2 w-fit rounded-md", tool.bgColor)}>
@@ -161,7 +161,7 @@ export default function HomePage() {
             >
               <Card
                 onClick={() => router.push(tool.href)}
-                className=" border-black/5 flex items-center justify-between  transition cursor-pointer  text-[white] bg-[black]/80"
+                className=" border-black/5 flex items-center justify-between  transition cursor-pointer  text-[white] bg-[white]/20"
               >
                 <div className="flex items-center gap-x-4">
                   <div className={cn("p-2 w-fit rounded-md", tool.bgColor)}>

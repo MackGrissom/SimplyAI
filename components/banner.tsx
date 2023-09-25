@@ -21,8 +21,7 @@ const Banner: React.FC = () => {
                     <svg viewBox="0 0 2 2" className="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true">
                         <circle cx={1} cy={1} r={1} />
                     </svg>
-                    Join us as we continue to develop our tools and see what’s coming up next&nbsp;
-                    <span aria-hidden="true">&rarr;</span>
+                    Join us as we continue to develop our tools and see what’s coming up next
                 </a>
             </p>
             <div className="flex flex-1 justify-end">
