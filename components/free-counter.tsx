@@ -37,7 +37,7 @@ export const FreeCounter = ({
 
     return (
 
-        <div className=''>
+        <div className='border border-[skyblue] p-4'>
             <Card className="bg-transparent border-0 h-full w-[95%]">
                 <CardContent className="py-0">
                     <div className="text-center text-sm text-white mb-4 space-y-2">

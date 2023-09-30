@@ -7,7 +7,7 @@ export const UserAvatar = () => {
 
     return (
         <Avatar className="bg-transparent bg-sky rounded-full mt-3">
-            <AvatarImage src={user?.profileImageUrl}/>
+            <AvatarImage src={user?.imageUrl}/>
             <AvatarFallback>
                 {user?.firstName?.charAt(0)}
                 {user?.lastName?.charAt(0)}

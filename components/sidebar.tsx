@@ -42,7 +42,7 @@ const routes = [
         href: "/code",
     },
     {
-        label: "Image",
+        label: "Image Generator (Coming Soon)",
         icon: ImageIcon,
         color: "text-pink-700",
         href: "/image",
@@ -54,7 +54,7 @@ const routes = [
         href: "/video",
     },
     {
-        label: "Music",
+        label: "Music(Coming Soon)",
         icon: MusicIcon,
         color: "text-emerald-500",
         href: "/music",
@@ -90,8 +90,8 @@ export const Sidebar = ({
         <div
             className="space-y-4 flex flex-col h-full bg-[white]/20 text-white w-60"
         >
-            <div className="px-3 py-2 flex-1 ">
-                <Link href="/dashboard" className="flex items-center pl-3 mb-14 ">
+            <div className="px-3 py-2 flex-1">
+                <Link href="/dashboard" className="flex items-center pl-3 mb-14   ">
                     <div className="relative h-8 w-8 mr-4">
                         <LogoImage
                             alt="Logo"

@@ -45,14 +45,14 @@ export default function HomePage() {
       href: '/code',
     },
     {
-      label: 'Music Generator (In Beta)',
+      label: 'Music Generator (In Development)',
       icon: MusicIcon,
       href: '/music',
       color: "text-emerald-500",
       bgColor: "bg-emerald-500/10",
     },
     {
-      label: 'Image Generator (In Beta)',
+      label: 'Image Generator (In Development)',
       icon: ImageIcon,
       color: "text-pink-700",
       bgColor: "bg-pink-700/10",
