@@ -64,7 +64,7 @@ export default function HomePage() {
   ];
   const tools2 = [
     {
-      label: 'Video Generator (In Beta)',
+      label: 'Video Generator (In Development)',
       icon: VideoIcon,
       color: "text-orange-700",
       bgColor: "bg-orange-700/10",
